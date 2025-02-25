@@ -4,7 +4,7 @@ import "./index.css";
 import LandingPage from "./LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

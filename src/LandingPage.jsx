@@ -47,7 +47,7 @@ const appLogos = [
   appLogo21,
 ];
 
-function App() {
+function LandingPage() {
   return (
     <>
       <div className="nav-section mx-auto flex w-[70rem] items-center justify-between px-10 py-5">
@@ -359,4 +359,4 @@ function App() {
   );
 }
 
-export default App;
+export default LandingPage;

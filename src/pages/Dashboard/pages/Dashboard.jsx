@@ -129,7 +129,7 @@ export default function Dashboard() {
         <h3 className="text-xl font-semibold text-gray-900">All To-Do</h3>
 
         <div className="button-group flex gap-3">
-          <div className="font-geist flex cursor-pointer text-slate-600 items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm">
+          <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
             <AlarmClock className="h-4 w-4" />
             <select
               value={dateFilter}
@@ -144,7 +144,7 @@ export default function Dashboard() {
           </div>
 
           <div className="button-group flex gap-2">
-            <div className="font-geist flex cursor-pointer text-slate-600 items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm">
+            <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
               <Siren className="h-4 w-4" />
               <select
                 value={priorityFilter}

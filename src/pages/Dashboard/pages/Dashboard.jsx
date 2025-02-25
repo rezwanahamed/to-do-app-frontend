@@ -1,4 +1,4 @@
-import { CheckCheck, Settings2 } from "lucide-react";
+import { CheckCheck, Settings2, X } from "lucide-react";
 
 const data = [
   {
@@ -160,21 +160,10 @@ export default function Dashboard() {
               </div>
             </div>
             <span
-              className="pointer-events-none absolute top-4 right-4 text-gray-400 transition-all group-hover:text-gray-700"
+              className="pointer-events-none absolute top-4 right-4 text-gray-400 transition-all group-hover:text-white group-hover:bg-red-600 p-1 rounded-full"
               aria-hidden={true}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M7 7h10v10M7 17 17 7" />
-              </svg>
+              <X className="h-4 w-4" />
             </span>
           </div>
         ))}

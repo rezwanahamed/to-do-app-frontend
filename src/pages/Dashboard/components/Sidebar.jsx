@@ -59,16 +59,11 @@ export default function DashboardSidebar({ children }) {
           <ul className="space-y-2 px-3 font-medium">
             <li>
               <Link
-                to={"/dashboard/user"}
+                to={"/dashboard/add-todo"}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
-                <UserCircle className="h-5 w-5" />
-                <span className="ms-2 flex-1 text-base whitespace-nowrap">
-                  User Details
-                </span>
-                <span className="t ms-3 inline-flex items-center justify-center rounded-full bg-gray-100 px-2 text-xs font-medium text-gray-800">
-                  Pro
-                </span>
+                <BadgePlus className="h-5 w-5" />
+                <span className="ms-2 flex-1 whitespace-nowrap">Add Task</span>
               </Link>
             </li>
             <li>
@@ -99,22 +94,27 @@ export default function DashboardSidebar({ children }) {
                 </span>
               </Link>
             </li>
-            <li>
-              <Link
-                to={"/dashboard/add-todo"}
-                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
-              >
-                <BadgePlus className="h-5 w-5" />
-                <span className="ms-2 flex-1 whitespace-nowrap">Add Task</span>
-              </Link>
-            </li>
           </ul>
 
           {/* bottom access */}
           <ul className="absolute bottom-5 mt-4 w-[-webkit-fill-available] space-y-2 border-t border-gray-200 px-3 pt-4 font-medium">
+          <li>
+              <Link
+                to={"/dashboard/user"}
+                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+              >
+                <UserCircle className="h-5 w-5" />
+                <span className="ms-2 flex-1 text-base whitespace-nowrap">
+                  User Details
+                </span>
+                <span className="t ms-3 inline-flex items-center justify-center rounded-full bg-gray-100 px-2 text-xs font-medium text-gray-800">
+                  Pro
+                </span>
+              </Link>
+            </li>
             <li>
               <Link
-                to={'/dashboard/settings'}
+                to={"/dashboard/settings"}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
                 <Settings2 className="h-5 w-5" />
@@ -123,7 +123,7 @@ export default function DashboardSidebar({ children }) {
             </li>
             <li>
               <Link
-                 to={'/dashboard/user'}
+                to={"/dashboard/user"}
                 className="group flex items-center rounded-lg p-2 text-gray-900 transition duration-75 hover:bg-gray-100"
               >
                 <UserRoundX className="h-5 w-5" />

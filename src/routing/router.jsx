@@ -7,6 +7,7 @@ import UserDetails from "../pages/Dashboard/pages/UserDetails";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Settings from "../pages/Dashboard/pages/Settings";
 import AddTodo from "../pages/Dashboard/pages/AddTodo";
+import Modal from "../pages/Dashboard/components/Model";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: <Settings />,
+      },
+      {
+        path: "modal",
+        element: <Modal />,
       },
     ],
   },

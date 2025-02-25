@@ -1,5 +1,6 @@
 import {
   BadgePlus,
+  Circle,
   CircleCheck,
   CircleDashed,
   Command,
@@ -91,6 +92,40 @@ export default function DashboardSidebar({ children }) {
                 <span className="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800">
                   3
                 </span>
+              </Link>
+            </li>
+          </ul>
+
+          {/* task status  */}
+          <ul className="mt-5 px-3 font-medium">
+            <h3 className="mb-3 ml-3 text-sm font-medium text-gray-500">
+              All Status
+            </h3>
+            <li>
+              <Link
+                to={"/dashboard/add-todo"}
+                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+              >
+                <Circle fill="#1C64F2" stroke="#1C64F2" className="h-4 w-4" />
+                <span className="ms-2 flex-1 whitespace-nowrap">High</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/dashboard/user"}
+                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+              >
+                <Circle fill="#76A9FA" stroke="#76A9FA" className="h-4 w-4" />
+                <span className="ms-2 flex-1 whitespace-nowrap">Medium</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/dashboard/user"}
+                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+              >
+                <Circle fill="#C3DDFD" stroke="#C3DDFD" className="h-4 w-4" />
+                <span className="ms-2 flex-1 whitespace-nowrap">Low</span>
               </Link>
             </li>
           </ul>

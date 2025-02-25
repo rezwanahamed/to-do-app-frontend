@@ -228,7 +228,7 @@ function LandingPage() {
           <div className="right-part w-[80%]">
             <div className="footer-content mx-auto flex justify-between px-10 text-sm">
               <div className="link-section space-y-3">
-                <h3 className="font-europa-italic text-base tracking-[2px]">
+                <h3 className="font-geist font-medium text-base">
                   Product
                 </h3>
                 <ul className="space-y-1">
@@ -251,7 +251,7 @@ function LandingPage() {
               </div>
 
               <div className="link-section space-y-3">
-                <h3 className="font-europa-italic text-base tracking-[2px]">
+                <h3 className="font-geist font-medium text-base">
                   Resources
                 </h3>
                 <ul className="space-y-1">
@@ -274,7 +274,7 @@ function LandingPage() {
               </div>
 
               <div className="link-section space-y-3">
-                <h3 className="font-europa-italic text-base tracking-[2px]">
+                <h3 className="font-geist font-medium text-base">
                   Company
                 </h3>
                 <ul className="space-y-1">
@@ -307,7 +307,7 @@ function LandingPage() {
               </div>
 
               <div className="link-section space-y-3">
-                <h3 className="font-europa-italic text-base tracking-[2px]">
+                <h3 className="font-geist font-medium text-base">
                   Support
                 </h3>
                 <ul className="space-y-1">
@@ -330,7 +330,7 @@ function LandingPage() {
               </div>
 
               <div className="link-section space-y-3">
-                <h3 className="font-europa-italic text-base tracking-[2px]">
+                <h3 className="font-geist font-medium text-base">
                   Community
                 </h3>
                 <ul className="space-y-1">

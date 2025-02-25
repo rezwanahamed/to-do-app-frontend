@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import PropTypes from 'prop-types';
 
-export default function Sidebar({ children }) {
+export default function DashboardSidebar({ children }) {
   return (
     <div className="font-geist">
       <button
@@ -139,6 +139,6 @@ export default function Sidebar({ children }) {
   );
 }
 
-Sidebar.propTypes = {
+DashboardSidebar.propTypes = {
   children: PropTypes.node
 };

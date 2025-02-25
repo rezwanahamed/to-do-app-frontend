@@ -2,6 +2,7 @@ import {
   BadgePlus,
   Circle,
   CircleCheck,
+  CircleCheckBig,
   CircleDashed,
   Command,
   Settings2,
@@ -88,6 +89,20 @@ export default function DashboardSidebar({ children }) {
                 <CircleDashed className="h-5 w-5" />
                 <span className="ms-2 flex-1 whitespace-nowrap">
                   Pending Task
+                </span>
+                <span className="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800">
+                  3
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={"/dashboard/user"}
+                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
+              >
+                <CircleCheckBig className="h-5 w-5" />
+                <span className="ms-2 flex-1 whitespace-nowrap">
+                  Completed Task
                 </span>
                 <span className="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800">
                   3

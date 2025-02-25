@@ -158,7 +158,7 @@ function LandingPage() {
             <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14204715/file/original-e64a3775ffa1b9133739774908aadda7.jpg?resize=1504x941&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
             <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281050/file/original-6838cb6a8800981aa20047b069c0b740.jpg?resize=1504x1128&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
           </div>
-          <div className="h-[30rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
+          <div className="h-[30.5rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
         </section>
 
         <div className="bottom-title w-[50rem] space-y-6 pb-10 text-center">

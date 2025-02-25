@@ -151,7 +151,7 @@ export default function Dashboard() {
                 onChange={handleFilterPriorityChange}
                 className="cursor-pointer border-0 text-sm focus-visible:ring-0"
               >
-                <option value="">Filter by status</option>
+                <option value="">All status</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>

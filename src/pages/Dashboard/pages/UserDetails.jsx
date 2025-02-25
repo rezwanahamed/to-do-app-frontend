@@ -1,11 +1,11 @@
 export default function Example() {
   return (
-    <div className="sm:mx-auto sm:max-w-2xl mt-20">
+    <div className="sm:mx-auto sm:max-w-2xl md:mt-20">
       <h3 className="text-lg font-semibold text-gray-900">
         Register to workspace
       </h3>
       <p className="mt-1 text-sm leading-6 text-gray-600">
-        Take a few moments to register for your company's workspace
+        Take a few moments to register for your company&apos;s workspace
       </p>
       <form action="#" method="post" className="mt-8">
         <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">

@@ -1,4 +1,5 @@
 import { AlarmClock, CheckCheck, Settings2, Siren, X } from "lucide-react";
+import React from "react";
 
 const data = [
   {
@@ -112,21 +113,54 @@ const data = [
 ];
 
 export default function Dashboard() {
+  const [dateFilter, setDateFilter] = React.useState("All");
+  const [priorityFilter, setPriorityFilter] = React.useState("All");
+
+  const handleFilterDateChange = (event) => {
+    setDateFilter(event.target.value);
+  };
+  const handleFilterPriorityChange = (event) => {
+    setPriorityFilter(event.target.value);
+  };
+
   return (
     <div className="px-5 py-3">
       <div className="flex items-center justify-between space-x-2">
         <h3 className="text-xl font-semibold text-gray-900">All To-Do</h3>
 
-        <div className="button-group flex gap-2">
-          <button className="font-geist flex cursor-pointer items-center justify-center gap-2 rounded-md border border-black px-5 py-1.5 text-sm">
-            <AlarmClock className="h-4 w-4" /> Filter by date
-          </button>
-          <button className="font-geist flex cursor-pointer items-center justify-center gap-2 rounded-md border border-black px-5 py-1.5 text-sm">
-            <Siren className="h-4 w-4" /> Filter by status
-          </button>
+        <div className="button-group flex gap-3">
+          <div className="font-geist flex cursor-pointer text-slate-600 items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm">
+            <AlarmClock className="h-4 w-4" />
+            <select
+              value={dateFilter}
+              onChange={handleFilterDateChange}
+              className="cursor-pointer border-0 text-sm focus-visible:ring-0"
+            >
+              <option value="">All Dates</option>
+              <option value="Today">Today</option>
+              <option value="This Week">This Week</option>
+              <option value="This Month">This Month</option>
+            </select>
+          </div>
+
+          <div className="button-group flex gap-2">
+            <div className="font-geist flex cursor-pointer text-slate-600 items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm">
+              <Siren className="h-4 w-4" />
+              <select
+                value={priorityFilter}
+                onChange={handleFilterPriorityChange}
+                className="cursor-pointer border-0 text-sm focus-visible:ring-0"
+              >
+                <option value="">Filter by status</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="my-4 h-px bg-gray-200 mb-2" /> {/* Custom Divider */}
+      <div className="my-3 mb-2 h-px bg-gray-200" /> {/* Custom Divider */}
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((member) => (
           <div
@@ -166,7 +200,7 @@ export default function Dashboard() {
               </div>
             </div>
             <span
-              className="pointer-events-none absolute top-4 right-4 rounded-full p-1 text-gray-400 transition-all group-hover:bg-red-600 group-hover:text-white"
+              className="pointer-events-none absolute top-4 right-4 rounded-full p-1 text-gray-400 transition-all group-hover:bg-gray-100 group-hover:text-slate-700"
               aria-hidden={true}
             >
               <X className="h-4 w-4" />

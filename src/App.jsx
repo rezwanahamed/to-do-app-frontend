@@ -52,7 +52,7 @@ function App() {
         </div>
         <div className="right-part w-[20%]">
           <div className="button-group flex gap-2">
-            <button className="register-button flex cursor-pointer items-center gap-1 rounded-full px-6 py-2.5 text-sm text-black duration-200 hover:bg-black hover:text-white">
+            <button className="register-button px</svg>-6 flex cursor-pointer items-center gap-1 rounded-full px-6 py-2.5 text-sm text-black duration-200 hover:bg-black hover:text-white">
               English{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +114,8 @@ function App() {
 
       <div className="wrapper flex flex-col items-center justify-center">
         <div className="app-supported-section mt-10 flex w-[70rem] items-center justify-center">
-          <Marquee gradient={true} speed={100}>
-            <div className="flex gap-14">
+          <Marquee gradient={true} speed={50}>
+            <div className="ml-14 flex gap-14">
               <img src={appLogo1} alt="app logo 1" className="h-6 w-6" />
               <img src={appLogo2} alt="app logo 2" className="h-6 w-6" />
               <img src={appLogo3} alt="app logo 3" className="h-6 w-6" />
@@ -137,54 +137,6 @@ function App() {
               <img src={appLogo19} alt="app logo 19" className="h-6 w-6" />
               <img src={appLogo20} alt="app logo 20" className="h-6 w-6" />
               <img src={appLogo21} alt="app logo 21" className="h-6 w-6" />
-              <img src={appLogo1} alt="app logo 1" className="h-6 w-6" />
-              <img src={appLogo2} alt="app logo 2" className="h-6 w-6" />
-              <img src={appLogo3} alt="app logo 3" className="h-6 w-6" />
-              <img src={appLogo4} alt="app logo 4" className="h-6 w-6" />
-              <img src={appLogo5} alt="app logo 5" className="h-6 w-6" />
-              <img src={appLogo6} alt="app logo 6" className="h-6 w-6" />
-              <img src={appLogo7} alt="app logo 7" className="h-6 w-6" />
-              <img src={appLogo8} alt="app logo 8" className="h-6 w-6" />
-              <img src={appLogo9} alt="app logo 9" className="h-6 w-6" />
-              <img src={appLogo10} alt="app logo 10" className="h-6 w-6" />
-              <img src={appLogo11} alt="app logo 11" className="h-6 w-6" />
-              <img src={appLogo12} alt="app logo 12" className="h-6 w-6" />
-              <img src={appLogo13} alt="app logo 13" className="h-6 w-6" />
-            </div>
-            <div className="flex gap-14">
-              <img src={appLogo2} alt="app logo 2" className="h-6 w-6" />
-              <img src={appLogo3} alt="app logo 3" className="h-6 w-6" />
-              <img src={appLogo4} alt="app logo 4" className="h-6 w-6" />
-              <img src={appLogo5} alt="app logo 5" className="h-6 w-6" />
-              <img src={appLogo6} alt="app logo 6" className="h-6 w-6" />
-              <img src={appLogo7} alt="app logo 7" className="h-6 w-6" />
-              <img src={appLogo8} alt="app logo 8" className="h-6 w-6" />
-              <img src={appLogo9} alt="app logo 9" className="h-6 w-6" />
-              <img src={appLogo10} alt="app logo 10" className="h-6 w-6" />
-              <img src={appLogo11} alt="app logo 11" className="h-6 w-6" />
-              <img src={appLogo12} alt="app logo 12" className="h-6 w-6" />
-              <img src={appLogo13} alt="app logo 13" className="h-6 w-6" />
-              <img src={appLogo14} alt="app logo 14" className="h-6 w-6" />
-              <img src={appLogo15} alt="app logo 15" className="h-6 w-6" />
-              <img src={appLogo16} alt="app logo 16" className="h-6 w-6" />
-              <img src={appLogo17} alt="app logo 17" className="h-6 w-6" />
-              <img src={appLogo18} alt="app logo 18" className="h-6 w-6" />
-              <img src={appLogo19} alt="app logo 19" className="h-6 w-6" />
-              <img src={appLogo20} alt="app logo 20" className="h-6 w-6" />
-              <img src={appLogo21} alt="app logo 21" className="h-6 w-6" />
-              <img src={appLogo1} alt="app logo 1" className="h-6 w-6" />
-              <img src={appLogo2} alt="app logo 2" className="h-6 w-6" />
-              <img src={appLogo3} alt="app logo 3" className="h-6 w-6" />
-              <img src={appLogo4} alt="app logo 4" className="h-6 w-6" />
-              <img src={appLogo5} alt="app logo 5" className="h-6 w-6" />
-              <img src={appLogo6} alt="app logo 6" className="h-6 w-6" />
-              <img src={appLogo7} alt="app logo 7" className="h-6 w-6" />
-              <img src={appLogo8} alt="app logo 8" className="h-6 w-6" />
-              <img src={appLogo9} alt="app logo 9" className="h-6 w-6" />
-              <img src={appLogo10} alt="app logo 10" className="h-6 w-6" />
-              <img src={appLogo11} alt="app logo 11" className="h-6 w-6" />
-              <img src={appLogo12} alt="app logo 12" className="h-6 w-6" />
-              <img src={appLogo13} alt="app logo 13" className="h-6 w-6" />
             </div>
           </Marquee>
         </div>
@@ -215,8 +167,11 @@ function App() {
         {/* google sink */}
         <section className="bento-layout flex w-[60rem] items-start gap-2 py-20">
           <div className="left-part">
-            <h2 className="font-europa-italic w-[60%] text-3xl tracking-[2px]">
-              Seamlessly Syncing and Managing Tasks with Google Calendar
+            <h2 className="font-geist w-[80%] text-3xl">
+              Seamlessly Syncing and Managing Tasks with{" "}
+              <span className="font-europa-italic text-4xl tracking-[2px]">
+                Google Calendar
+              </span>
             </h2>
             <p className="font-geist mt-5 w-[90%] text-xl font-medium text-gray-500">
               Learn how to efficiently organize, schedule, and manage your tasks
@@ -254,15 +209,17 @@ function App() {
         </section>
       </div>
 
-      <footer className="w-screen bg-gray-100 px-[18rem] flex justify-between items-start py-16">
+      <footer className="flex w-screen items-start justify-between bg-gray-100 px-[18rem] py-24">
         <div className="left-part">
-          <p>Start your journey </p>
+          <p className="font-europa-italic text-5xl">Start your journey </p>
         </div>
         <div className="right-part w-[80%]">
-          <div className="footer-content mx-auto flex justify-between px-10 ">
-            <div className="link-section space-y-4">
-              <h3 className="font-europa-italic text-xl">Product</h3>
-              <ul className="space-y-2">
+          <div className="footer-content mx-auto flex justify-between px-10 text-sm">
+            <div className="link-section space-y-3">
+              <h3 className="font-europa-italic text-base tracking-[2px]">
+                Product
+              </h3>
+              <ul className="space-y-1">
                 <li>
                   <a href="#" className="text-gray-600 hover:text-black">
                     Features
@@ -281,9 +238,11 @@ function App() {
               </ul>
             </div>
 
-            <div className="link-section space-y-4">
-              <h3 className="font-europa-italic text-xl">Resources</h3>
-              <ul className="space-y-2">
+            <div className="link-section space-y-3">
+              <h3 className="font-europa-italic text-base tracking-[2px]">
+                Resources
+              </h3>
+              <ul className="space-y-1">
                 <li>
                   <a href="#" className="text-gray-600 hover:text-black">
                     Blog
@@ -302,9 +261,11 @@ function App() {
               </ul>
             </div>
 
-            <div className="link-section space-y-4">
-              <h3 className="font-europa-italic text-xl">Company</h3>
-              <ul className="space-y-2">
+            <div className="link-section space-y-3">
+              <h3 className="font-europa-italic text-base tracking-[2px]">
+                Company
+              </h3>
+              <ul className="space-y-1">
                 <li>
                   <a href="#" className="text-gray-600 hover:text-black">
                     About Us
@@ -318,6 +279,62 @@ function App() {
                 <li>
                   <a href="#" className="text-gray-600 hover:text-black">
                     Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="link-section space-y-3">
+              <h3 className="font-europa-italic text-base tracking-[2px]">
+                Support
+              </h3>
+              <ul className="space-y-1">
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    FAQs
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Live Chat
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Report an Issue
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="link-section space-y-3">
+              <h3 className="font-europa-italic text-base tracking-[2px]">
+                Community
+              </h3>
+              <ul className="space-y-1">
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Forum
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Events
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-gray-600 hover:text-black">
+                    Contribute
                   </a>
                 </li>
               </ul>

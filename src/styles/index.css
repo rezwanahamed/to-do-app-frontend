@@ -7,14 +7,14 @@
 
 @font-face {
   font-family: "europa";
-  src: url("./assets/fonts/Fontspring-DEMO-the_erupha.otf") format("opentype");
+  src: url("../assets/fonts/Fontspring-DEMO-the_erupha.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "europa_italic";
-  src: url("./assets/fonts/Fontspring-DEMO-the_erupha_italic_scale.otf")
+  src: url("../assets/fonts/Fontspring-DEMO-the_erupha_italic_scale.otf")
     format("opentype");
   font-weight: normal;
   font-style: normal;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "europa_scale";
-  src: url("./assets/fonts/Fontspring-DEMO-the_erupha_scale.otf")
+  src: url("../assets/fonts/Fontspring-DEMO-the_erupha_scale.otf")
     format("opentype");
   font-weight: normal;
   font-style: normal;

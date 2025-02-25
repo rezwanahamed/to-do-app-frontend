@@ -23,6 +23,30 @@ import appLogo7 from "./assets/images/logos/7.svg";
 import appLogo8 from "./assets/images/logos/8.svg";
 import appLogo9 from "./assets/images/logos/9.svg";
 
+const appLogos = [
+  appLogo1,
+  appLogo2,
+  appLogo3,
+  appLogo4,
+  appLogo5,
+  appLogo6,
+  appLogo7,
+  appLogo8,
+  appLogo9,
+  appLogo10,
+  appLogo11,
+  appLogo12,
+  appLogo13,
+  appLogo14,
+  appLogo15,
+  appLogo16,
+  appLogo17,
+  appLogo18,
+  appLogo19,
+  appLogo20,
+  appLogo21,
+];
+
 function App() {
   return (
     <>
@@ -116,27 +140,14 @@ function App() {
         <div className="app-supported-section mt-10 flex w-[70rem] items-center justify-center">
           <Marquee gradient={true} speed={50}>
             <div className="ml-14 flex gap-14">
-              <img src={appLogo1} alt="app logo 1" className="h-6 w-6" />
-              <img src={appLogo2} alt="app logo 2" className="h-6 w-6" />
-              <img src={appLogo3} alt="app logo 3" className="h-6 w-6" />
-              <img src={appLogo4} alt="app logo 4" className="h-6 w-6" />
-              <img src={appLogo5} alt="app logo 5" className="h-6 w-6" />
-              <img src={appLogo6} alt="app logo 6" className="h-6 w-6" />
-              <img src={appLogo7} alt="app logo 7" className="h-6 w-6" />
-              <img src={appLogo8} alt="app logo 8" className="h-6 w-6" />
-              <img src={appLogo9} alt="app logo 9" className="h-6 w-6" />
-              <img src={appLogo10} alt="app logo 10" className="h-6 w-6" />
-              <img src={appLogo11} alt="app logo 11" className="h-6 w-6" />
-              <img src={appLogo12} alt="app logo 12" className="h-6 w-6" />
-              <img src={appLogo13} alt="app logo 13" className="h-6 w-6" />
-              <img src={appLogo14} alt="app logo 14" className="h-6 w-6" />
-              <img src={appLogo15} alt="app logo 15" className="h-6 w-6" />
-              <img src={appLogo16} alt="app logo 16" className="h-6 w-6" />
-              <img src={appLogo17} alt="app logo 17" className="h-6 w-6" />
-              <img src={appLogo18} alt="app logo 18" className="h-6 w-6" />
-              <img src={appLogo19} alt="app logo 19" className="h-6 w-6" />
-              <img src={appLogo20} alt="app logo 20" className="h-6 w-6" />
-              <img src={appLogo21} alt="app logo 21" className="h-6 w-6" />
+              {appLogos.map((logo, index) => (
+                <img
+                  key={index}
+                  src={logo}
+                  alt={`app logo ${index + 1}`}
+                  className="h-6 w-6"
+                />
+              ))}
             </div>
           </Marquee>
         </div>
@@ -209,135 +220,137 @@ function App() {
         </section>
       </div>
 
-      <footer className="flex w-screen items-start justify-between bg-gray-100 px-[18rem] py-24">
-        <div className="left-part">
-          <p className="font-europa-italic text-5xl">Start your journey </p>
-        </div>
-        <div className="right-part w-[80%]">
-          <div className="footer-content mx-auto flex justify-between px-10 text-sm">
-            <div className="link-section space-y-3">
-              <h3 className="font-europa-italic text-base tracking-[2px]">
-                Product
-              </h3>
-              <ul className="space-y-1">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Integrations
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <footer className="mx-auto w-screen bg-gray-100 py-24">
+        <div className="wrapper mx-auto flex w-[70rem] items-start justify-between">
+          <div className="left-part">
+            <p className="font-europa-italic text-5xl">Start your journey </p>
+          </div>
+          <div className="right-part w-[80%]">
+            <div className="footer-content mx-auto flex justify-between px-10 text-sm">
+              <div className="link-section space-y-3">
+                <h3 className="font-europa-italic text-base tracking-[2px]">
+                  Product
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Features
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Pricing
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Integrations
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="link-section space-y-3">
-              <h3 className="font-europa-italic text-base tracking-[2px]">
-                Resources
-              </h3>
-              <ul className="space-y-1">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Documentation
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div className="link-section space-y-3">
+                <h3 className="font-europa-italic text-base tracking-[2px]">
+                  Resources
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Blog
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Help Center
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Documentation
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="link-section space-y-3">
-              <h3 className="font-europa-italic text-base tracking-[2px]">
-                Company
-              </h3>
-              <ul className="space-y-1">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div className="link-section space-y-3">
+                <h3 className="font-europa-italic text-base tracking-[2px]">
+                  Company
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      About Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Careers
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Contact
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Terms of Service
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Privacy Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="link-section space-y-3">
-              <h3 className="font-europa-italic text-base tracking-[2px]">
-                Support
-              </h3>
-              <ul className="space-y-1">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    FAQs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Live Chat
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Report an Issue
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div className="link-section space-y-3">
+                <h3 className="font-europa-italic text-base tracking-[2px]">
+                  Support
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      FAQs
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Live Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Report an Issue
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <div className="link-section space-y-3">
-              <h3 className="font-europa-italic text-base tracking-[2px]">
-                Community
-              </h3>
-              <ul className="space-y-1">
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Forum
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Events
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-600 hover:text-black">
-                    Contribute
-                  </a>
-                </li>
-              </ul>
+              <div className="link-section space-y-3">
+                <h3 className="font-europa-italic text-base tracking-[2px]">
+                  Community
+                </h3>
+                <ul className="space-y-1">
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Forum
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Events
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-600 hover:text-black">
+                      Contribute
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

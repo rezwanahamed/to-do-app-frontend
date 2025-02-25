@@ -1,4 +1,4 @@
-export default function Example() {
+export default function UserDetails() {
   return (
     <div className="sm:mx-auto sm:max-w-2xl md:mt-20">
       <h3 className="text-lg font-semibold text-gray-900">

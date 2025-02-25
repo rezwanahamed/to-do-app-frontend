@@ -5,7 +5,6 @@ import {
   Command,
   Settings2,
   UserCircle,
-  UserRoundX,
 } from "lucide-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -98,7 +97,7 @@ export default function DashboardSidebar({ children }) {
 
           {/* bottom access */}
           <ul className="absolute bottom-5 mt-4 w-[-webkit-fill-available] space-y-2 border-t border-gray-200 px-3 pt-4 font-medium">
-          <li>
+            <li>
               <Link
                 to={"/dashboard/user"}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
@@ -121,13 +120,12 @@ export default function DashboardSidebar({ children }) {
                 <span className="ms-2 flex-1 whitespace-nowrap">Settings</span>
               </Link>
             </li>
-            <li>
+            <li className="pt-4">
               <Link
                 to={"/dashboard/user"}
-                className="group flex items-center rounded-lg p-2 text-gray-900 transition duration-75 hover:bg-gray-100"
+                className="group flex items-center justify-center rounded-lg border border-blue-600 bg-blue-600 p-2 text-white transition duration-75 hover:bg-transparent hover:text-blue-600"
               >
-                <UserRoundX className="h-5 w-5" />
-                <span className="ms-2">Logout</span>
+                <span>Logout</span>
               </Link>
             </li>
           </ul>

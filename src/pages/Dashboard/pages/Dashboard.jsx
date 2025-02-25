@@ -1,4 +1,4 @@
-import { CheckCheck, Settings2, X } from "lucide-react";
+import { AlarmClock, CheckCheck, Settings2, Siren, X } from "lucide-react";
 
 const data = [
   {
@@ -113,14 +113,20 @@ const data = [
 
 export default function Dashboard() {
   return (
-    <>
-      <div className="flex items-center space-x-2">
-        <h3 className="text-base font-medium text-gray-900">Members</h3>
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs font-medium text-gray-700">
-          {data.length}
-        </span>
+    <div className="px-5 py-3">
+      <div className="flex items-center justify-between space-x-2">
+        <h3 className="text-xl font-semibold text-gray-900">All To-Do</h3>
+
+        <div className="button-group flex gap-2">
+          <button className="font-geist flex cursor-pointer items-center justify-center gap-2 rounded-md border border-black px-5 py-1.5 text-sm">
+            <AlarmClock className="h-4 w-4" /> Filter by date
+          </button>
+          <button className="font-geist flex cursor-pointer items-center justify-center gap-2 rounded-md border border-black px-5 py-1.5 text-sm">
+            <Siren className="h-4 w-4" /> Filter by status
+          </button>
+        </div>
       </div>
-      <div className="my-4 h-px bg-gray-200" /> {/* Custom Divider */}
+      <div className="my-4 h-px bg-gray-200 mb-2" /> {/* Custom Divider */}
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((member) => (
           <div
@@ -160,7 +166,7 @@ export default function Dashboard() {
               </div>
             </div>
             <span
-              className="pointer-events-none absolute top-4 right-4 text-gray-400 transition-all group-hover:text-white group-hover:bg-red-600 p-1 rounded-full"
+              className="pointer-events-none absolute top-4 right-4 rounded-full p-1 text-gray-400 transition-all group-hover:bg-red-600 group-hover:text-white"
               aria-hidden={true}
             >
               <X className="h-4 w-4" />
@@ -168,6 +174,6 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

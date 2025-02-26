@@ -1,5 +1,7 @@
 import { Globe } from "lucide-react";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
+import appRoutes from "../../../lib/config/route";
 import hero from "../../assets/images/hero.svg";
 import logo from "../../assets/images/logo.svg";
 import appLogo1 from "../../assets/images/logos/1.svg";
@@ -81,9 +83,9 @@ function LandingPage() {
               English <Globe className="h-4" />
             </button>
 
-            <button className="register-button cursor-pointer rounded-full bg-black px-6 py-2.5 text-sm text-white duration-200 hover:bg-blue-500">
+            <Link to={appRoutes.register} className="register-button cursor-pointer rounded-full bg-black px-6 py-2.5 text-sm text-white duration-200 hover:bg-blue-500">
               Register
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -101,9 +103,9 @@ function LandingPage() {
           simple, and efficient to-do app.
         </p>
 
-        <button
-          type="button"
-          className="text-md mt-10 mb-2 flex cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none"
+        <Link
+          to={appRoutes.register}
+          className="text-md mt-10 mb-2 flex w-max cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none"
         >
           Get started{" "}
           <svg
@@ -120,7 +122,7 @@ function LandingPage() {
               d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
-        </button>
+        </Link>
       </div>
 
       <div className="wrapper flex flex-col items-center justify-center">
@@ -179,9 +181,10 @@ function LandingPage() {
               you`&apos`re managing personal to-dos or team projects, discover
               the best practices to stay on track and never miss a deadline.
             </p>
-            <button
+            <Link
+              to={appRoutes.register}
               type="button"
-              className="text-md mx-auto mt-8 mb-15 flex cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none md:mx-0 md:mb-2"
+              className="text-md mx-auto mt-8 mb-15 flex w-max cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none md:mx-0 md:mb-2"
             >
               Get started{" "}
               <svg
@@ -198,7 +201,7 @@ function LandingPage() {
                   d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
               </svg>
-            </button>
+            </Link>
           </div>
           <div className="md:grid-row-2 right-part order-1 mb-10 grid gap-2 md:order-2 md:mb-0">
             <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>

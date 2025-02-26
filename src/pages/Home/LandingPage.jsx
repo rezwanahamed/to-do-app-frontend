@@ -221,16 +221,16 @@ function LandingPage() {
       </div>
 
       <footer className="mx-auto w-screen bg-gray-100 py-24">
-        <div className="wrapper mx-auto flex w-[70rem] items-start justify-between">
-          <div className="left-part">
-            <p className="font-europa-italic text-5xl">Start your journey </p>
+        <div className="wrapper mx-auto flex w-[90%] flex-col items-start justify-between md:w-[70rem] md:flex-row">
+          <div className="left-part mb-10 md:mb-0">
+            <p className="font-europa-italic text-3xl md:text-5xl">
+              Start your journey{" "}
+            </p>
           </div>
-          <div className="right-part w-[80%]">
-            <div className="footer-content mx-auto flex justify-between px-10 text-sm">
-              <div className="link-section space-y-3">
-                <h3 className="font-geist font-medium text-base">
-                  Product
-                </h3>
+          <div className="right-part w-full md:w-[80%]">
+            <div className="footer-content mx-auto flex flex-col justify-between px-5 text-sm md:flex-row md:px-10">
+              <div className="link-section mb-6 space-y-3 md:mb-0">
+                <h3 className="font-geist text-base font-medium">Product</h3>
                 <ul className="space-y-1">
                   <li>
                     <a href="#" className="text-gray-600 hover:text-black">
@@ -249,11 +249,8 @@ function LandingPage() {
                   </li>
                 </ul>
               </div>
-
-              <div className="link-section space-y-3">
-                <h3 className="font-geist font-medium text-base">
-                  Resources
-                </h3>
+              <div className="link-section mb-6 space-y-3 md:mb-0">
+                <h3 className="font-geist text-base font-medium">Resources</h3>
                 <ul className="space-y-1">
                   <li>
                     <a href="#" className="text-gray-600 hover:text-black">
@@ -272,11 +269,8 @@ function LandingPage() {
                   </li>
                 </ul>
               </div>
-
-              <div className="link-section space-y-3">
-                <h3 className="font-geist font-medium text-base">
-                  Company
-                </h3>
+              <div className="link-section mb-6 space-y-3 md:mb-0">
+                <h3 className="font-geist text-base font-medium">Company</h3>
                 <ul className="space-y-1">
                   <li>
                     <a href="#" className="text-gray-600 hover:text-black">
@@ -305,11 +299,8 @@ function LandingPage() {
                   </li>
                 </ul>
               </div>
-
-              <div className="link-section space-y-3">
-                <h3 className="font-geist font-medium text-base">
-                  Support
-                </h3>
+              <div className="link-section mb-6 space-y-3 md:mb-0">
+                <h3 className="font-geist text-base font-medium">Support</h3>
                 <ul className="space-y-1">
                   <li>
                     <a href="#" className="text-gray-600 hover:text-black">
@@ -328,11 +319,8 @@ function LandingPage() {
                   </li>
                 </ul>
               </div>
-
               <div className="link-section space-y-3">
-                <h3 className="font-geist font-medium text-base">
-                  Community
-                </h3>
+                <h3 className="font-geist text-base font-medium">Community</h3>
                 <ul className="space-y-1">
                   <li>
                     <a href="#" className="text-gray-600 hover:text-black">

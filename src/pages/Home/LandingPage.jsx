@@ -1,3 +1,4 @@
+import { Globe } from "lucide-react";
 import Marquee from "react-fast-marquee";
 import hero from "../../assets/images/hero.svg";
 import logo from "../../assets/images/logo.svg";
@@ -50,11 +51,11 @@ const appLogos = [
 function LandingPage() {
   return (
     <>
-      <div className="nav-section mx-auto hidden w-[70rem] items-center justify-between px-10 py-5 md:flex">
-        <div className="left-part w-[20%]">
+      <div className="nav-section flex w-screen items-center justify-between px-4 py-5 md:mx-auto md:w-[70rem] md:px-10">
+        <div className="left-part md:w-[20%]">
           <img src={logo} alt="app logo" className="h-auto w-8" />
         </div>
-        <div className="mid-part flex w-full items-center justify-center gap-4">
+        <div className="mid-part hidden w-full items-center justify-center gap-4 md:flex">
           <a
             className="text-md font-geist text-gray-600 duration-200 hover:text-black"
             href=""
@@ -74,24 +75,10 @@ function LandingPage() {
             FAQs
           </a>
         </div>
-        <div className="right-part w-[20%]">
-          <div className="button-group flex gap-2">
-            <button className="register-button px</svg>-6 flex cursor-pointer items-center gap-1 rounded-full px-6 py-2.5 text-sm text-black duration-200 hover:bg-black hover:text-white">
-              English{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
-                />
-              </svg>
+        <div className="right-part w-full md:w-[20%]">
+          <div className="button-group flex justify-end gap-2">
+            <button className="register-button hidden cursor-pointer items-center gap-0.5 rounded-full px-6 py-2.5 text-sm text-black duration-200 hover:bg-black hover:text-white md:flex">
+              English <Globe className="h-4" />
             </button>
 
             <button className="register-button cursor-pointer rounded-full bg-black px-6 py-2.5 text-sm text-white duration-200 hover:bg-blue-500">
@@ -184,7 +171,7 @@ function LandingPage() {
                 Google Calendar
               </span>
             </h2>
-            <p className="font-geist mt-5 md:w-[90%] text-center text-xl font-medium text-gray-500 md:text-left">
+            <p className="font-geist mt-5 text-center text-xl font-medium text-gray-400 md:w-[90%] md:text-left">
               Learn how to efficiently organize, schedule, and manage your tasks
               using Google Calendar. This guide covers step-by-step instructions
               for creating, editing, and syncing tasks, setting reminders, and
@@ -213,7 +200,7 @@ function LandingPage() {
               </svg>
             </button>
           </div>
-          <div className="md:grid-row-2 right-part grid gap-2 order-1 md:order-2 mb-10 md:mb-0">
+          <div className="md:grid-row-2 right-part order-1 mb-10 grid gap-2 md:order-2 md:mb-0">
             <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
             <div className="h-[15rem] w-full rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
           </div>

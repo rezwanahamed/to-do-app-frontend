@@ -16,7 +16,7 @@ export default function Settings() {
           <h2 className="font-geist text-lg">
             Sync your account with Google Calendar 
           </h2>
-          <p className="mt-2 leading-[20px] w-[60%] text-center text-sm font-medium text-gray-500">
+          <p className="mt-2 leading-[20px] md:w-[60%] text-center text-sm font-medium text-gray-500">
             Sync your account with Google Calendar to seamlessly manage
             schedules, events, and reminders in one place. Stay organized, never
             miss important commitments, and access your calendar across all

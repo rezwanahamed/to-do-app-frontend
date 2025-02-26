@@ -128,9 +128,9 @@ export default function Dashboard() {
   return (
     <>
       <div className="px-5 py-3">
-        <div className="flex items-center justify-between space-x-2">
-          <h3 className="text-xl font-semibold text-gray-900">All To-Do</h3>
-
+        <div className="md:flex items-center justify-between space-x-2">
+          <h3 className="md:text-xl font-semibold text-gray-900 mb-4 md:mb-0">All To-Do</h3>
+          
           <div className="button-group flex gap-3">
             <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
               <AlarmClock className="h-4 w-4" />

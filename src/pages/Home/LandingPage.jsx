@@ -177,7 +177,7 @@ function LandingPage() {
 
         {/* google sink */}
         <section className="google-bento-layout grid w-screen grid-cols-1 items-start gap-2 px-4 py-20 md:flex md:w-[70rem]">
-          <div className="left-part ">
+          <div className="left-part order-2 md:order-1">
             <h2 className="font-geist text-center text-3xl md:w-[80%] md:text-left">
               Seamlessly Syncing and Managing Tasks with{" "}
               <span className="font-europa-italic text-4xl tracking-[2px]">
@@ -213,14 +213,14 @@ function LandingPage() {
               </svg>
             </button>
           </div>
-          <div className="md:grid-row-2 right-part grid gap-2">
+          <div className="md:grid-row-2 right-part grid gap-2 order-1 md:order-2 mb-10 md:mb-0">
             <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
             <div className="h-[15rem] w-full rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
           </div>
         </section>
       </div>
 
-      <footer className="mx-auto w-screen bg-gray-100 py-24">
+      <footer className="mx-auto w-screen bg-gray-100 py-10 md:py-24">
         <div className="wrapper mx-auto flex w-[90%] flex-col items-start justify-between md:w-[70rem] md:flex-row">
           <div className="left-part mb-10 md:mb-0">
             <p className="font-europa-italic text-3xl md:text-5xl">
@@ -228,7 +228,7 @@ function LandingPage() {
             </p>
           </div>
           <div className="right-part w-full md:w-[80%]">
-            <div className="footer-content mx-auto flex flex-col justify-between px-5 text-sm md:flex-row md:px-10">
+            <div className="footer-content mx-auto flex flex-col justify-between text-sm md:flex-row md:px-10">
               <div className="link-section mb-6 space-y-3 md:mb-0">
                 <h3 className="font-geist text-base font-medium">Product</h3>
                 <ul className="space-y-1">

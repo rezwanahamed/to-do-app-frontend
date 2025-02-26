@@ -153,15 +153,15 @@ function LandingPage() {
         </div>
 
         {/* bento layout */}
-        <section className="bento-layout flex items-center gap-2 py-20">
-          <div className="grid-row-2 grid gap-2">
-            <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14204715/file/original-e64a3775ffa1b9133739774908aadda7.jpg?resize=1504x941&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
-            <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281050/file/original-6838cb6a8800981aa20047b069c0b740.jpg?resize=1504x1128&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
+        <section className="bento-layout items-center gap-2 space-y-2 py-20 md:flex md:space-y-0">
+          <div className="md:grid-row-2 grid gap-2">
+            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14204715/file/original-e64a3775ffa1b9133739774908aadda7.jpg?resize=1504x941&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
+            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281050/file/original-6838cb6a8800981aa20047b069c0b740.jpg?resize=1504x1128&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
           </div>
-          <div className="h-[30.5rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
+          <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat md:h-[30.5rem] md:w-[30rem]"></div>
         </section>
 
-        <div className="bottom-title w-[50rem] space-y-6 pb-10 text-center">
+        <div className="bottom-title w-full space-y-6 pb-10 text-center md:w-[50rem]">
           <p className="font-europa-italic text-3xl tracking-[2px]">
             Get Things Done, Stress Free.
           </p>
@@ -176,9 +176,9 @@ function LandingPage() {
         </div>
 
         {/* google sink */}
-        <section className="google-bento-layout md:flex w-[60rem] items-start gap-2 py-20">
+        <section className="google-bento-layout grid w-screen grid-cols-1 items-start gap-2 py-20 md:flex md:w-[60rem]">
           <div className="left-part">
-            <h2 className="font-geist md:w-[80%] text-3xl">
+            <h2 className="font-geist text-3xl md:w-[80%]">
               Seamlessly Syncing and Managing Tasks with{" "}
               <span className="font-europa-italic text-4xl tracking-[2px]">
                 Google Calendar
@@ -214,8 +214,8 @@ function LandingPage() {
             </button>
           </div>
           <div className="md:grid-row-2 right-part grid gap-2">
-            <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
-            <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat"></div>
+            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
+            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
           </div>
         </section>
       </div>

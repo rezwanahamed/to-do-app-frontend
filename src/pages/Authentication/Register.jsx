@@ -1,24 +1,47 @@
+import { Globe } from "lucide-react";
 import { useState } from "react";
-
-const GoogleIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="size-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
-    />
-  </svg>
-);
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import useCrud from "../../../hooks/swrHooks";
+import apiEndpoints from "../../../lib/config/api";
+import appRoutes from "../../../lib/config/route";
 
 function Register() {
+  const { register, handleSubmit } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const { create, isLoading } = useCrud(apiEndpoints.register);
+
+  const onSubmit = async (data) => {
+    if (data.password !== data.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    const payload = {
+      email: data.email,
+      password: data.password,
+    };
+    console.log(payload);
+
+    try {
+      const response = await create(payload);
+      console.log(response);
+      if (response.status === 201) {
+        toast.success("User created successfully!");
+        return;
+      }
+      if (response.status === 400) {
+        toast.error("User already exists");
+        return;
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      toast.error("Failed to create user.");
+    }
+  };
 
   return (
     <div className="font-geist flex min-h-screen flex-1 flex-col justify-center px-4 py-10 lg:px-6">
@@ -27,7 +50,7 @@ function Register() {
           Register with credentials
         </h3>
 
-        <form action="#" method="post" className="mt-6 space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
           <div>
             <label
               htmlFor="email"
@@ -38,7 +61,7 @@ function Register() {
             <input
               type="email"
               id="email"
-              name="email"
+              {...register("email")}
               autoComplete="email"
               placeholder="john@company.com"
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
@@ -56,7 +79,7 @@ function Register() {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                name="password"
+                {...register("password")}
                 autoComplete="password"
                 placeholder="password"
                 className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
@@ -98,26 +121,26 @@ function Register() {
 
           <div>
             <label
-              htmlFor="password"
+              htmlFor="confirmPassword"
               className="text-sm font-medium text-gray-900"
             >
               Confirm password
             </label>
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                {...register("confirmPassword")}
                 autoComplete="password"
                 placeholder="password"
                 className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               />
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5"
               >
-                {showPassword ? (
+                {showConfirmPassword ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -146,13 +169,37 @@ function Register() {
               </button>
             </div>
           </div>
-
-          <button
-            type="submit"
-            className="mt-4 w-full cursor-pointer rounded-md bg-blue-500 py-2 text-center text-sm font-medium text-white duration-100 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
-          >
-            Sign up
-          </button>
+          {isLoading ? (
+            <button
+              type="submit"
+              className="mt-4 flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-blue-500 py-2 text-center text-sm font-medium text-white duration-100 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+            >
+              Sign up
+              <svg
+                aria-hidden="true"
+                className="inline h-4 w-4 animate-spin fill-black text-white"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="mt-4 w-full cursor-pointer rounded-md bg-blue-500 py-2 text-center text-sm font-medium text-white duration-100 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+            >
+              Sign up
+            </button>
+          )}
         </form>
 
         <div className="relative mt-6">
@@ -164,13 +211,13 @@ function Register() {
           </div>
         </div>
 
-        <a
-          href="#"
+        <Link
+          to={appRoutes.login}
           className="mt-6 flex w-full items-center justify-center space-x-2 rounded-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
         >
-          <GoogleIcon className="h-5 w-5" aria-hidden={true} />
+          <Globe className="h-5 w-5" aria-hidden={true} />
           <span>Sign in</span>
-        </a>
+        </Link>
 
         <p className="mt-4 text-xs text-gray-500">
           By signing in, you agree to our{" "}

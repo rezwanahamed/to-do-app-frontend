@@ -95,7 +95,7 @@ export function useDelete() {
   return { remove };
 }
 
-export function useCrud(endpoint) {
+export default function useCrud(endpoint) {
   const { data, isLoading, isError } = useData(endpoint);
   const { create } = useCreate();
   const { update, setupRealtime } = useUpdate();

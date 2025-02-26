@@ -33,6 +33,7 @@ function Register() {
 
         // pass to new page
         const redirect = {
+          userId: response?.user?.id,
           canRedirect: true,
           qr: response?.qrCodeUrl,
         };

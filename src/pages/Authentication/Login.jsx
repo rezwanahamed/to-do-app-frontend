@@ -1,33 +1,71 @@
 import { Globe } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import useCrud from "../../../hooks/swrHooks";
+import apiEndpoints from "../../../lib/config/api";
 import appRoutes from "../../../lib/config/route";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [otp, setOtp] = useState(false);
+  const [user, setUser] = useState();
+
+  const { register, handleSubmit, reset } = useForm();
+  const { create } = useCrud(apiEndpoints.login);
+  const { create: otpCreate } = useCrud(apiEndpoints.login_otp_verification);
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await create(data);
+      if (response?.status === 200) {
+        reset();
+        toast.success("Login successful");
+        setUser(response);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
+
+
+  const onOtpSubmit = async (data) => {
+    const payload = {
+      user: user?.userId,
+      otp: data,
+    };
+    try {
+      const response = await otpCreate(payload);
+      if (response?.status === 200) {
+        reset();
+        toast.success("Otp verification successful");
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
 
   return (
     <div className="font-geist flex min-h-screen flex-1 flex-col justify-center px-4 py-10 lg:px-6">
-      {otp ? (
+      {user ? (
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h3 className="text-center text-lg font-semibold text-gray-900">
             Enter your 6 digit OTP
           </h3>
 
-          <form action="#" method="post" className="mt-6 space-y-4">
+          <form onSubmit={onOtpSubmit(onSubmit)} className="mt-6 space-y-4">
             <div>
               <label
-                htmlFor="number"
+                htmlFor="otp"
                 className="text-sm font-medium text-gray-900"
               >
                 OTP
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="email"
+                type="text"
+                id="otp"
+                {...register("otp")}
                 placeholder="your otp here"
                 className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               />
@@ -47,7 +85,7 @@ function Login() {
             Log in or create account
           </h3>
 
-          <form action="#" method="post" className="mt-6 space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <div>
               <label
                 htmlFor="email"
@@ -58,7 +96,7 @@ function Login() {
               <input
                 type="email"
                 id="email"
-                name="email"
+                {...register("email")}
                 autoComplete="email"
                 placeholder="john@company.com"
                 className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
@@ -76,7 +114,7 @@ function Login() {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
-                  name="password"
+                  {...register("password")}
                   autoComplete="password"
                   placeholder="password"
                   className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"

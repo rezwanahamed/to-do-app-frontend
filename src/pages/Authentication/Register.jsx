@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useCrud from "../../../hooks/swrHooks";
 import apiEndpoints from "../../../lib/config/api";
 import appRoutes from "../../../lib/config/route";
+import { encryptData } from "../../../utils/functions";
 
 function Register() {
   const { register, handleSubmit, reset } = useForm();
@@ -26,10 +27,19 @@ function Register() {
     };
     try {
       const response = await create(payload);
-      console.log(response);
       if (response.status === 201) {
         toast.success("User created successfully!");
         reset(); // Reset the form
+
+        // pass to new page
+        const redirect = {
+          canRedirect: true,
+          qr: response?.qrCodeUrl,
+        };
+        const encryptedData = encryptData(JSON.stringify(redirect));
+        localStorage.setItem("redirect", JSON.stringify(encryptedData));
+
+        window.location.href = appRoutes.qr_verification;
         return;
       }
     } catch (error) {

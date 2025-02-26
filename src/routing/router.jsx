@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import LandingPage from "../pages/Home/LandingPage";
 import Login from "../pages/Authentication/Login";
+import QrVerification from "../pages/Authentication/QrVerification";
 import Register from "../pages/Authentication/Register";
-import Dashboard from "../pages/Dashboard/pages/Dashboard";
-import UserDetails from "../pages/Dashboard/pages/UserDetails";
-import DashboardLayout from "./layouts/DashboardLayout";
-import Settings from "../pages/Dashboard/pages/Settings";
-import AddTodo from "../pages/Dashboard/pages/AddTodo";
 import Modal from "../pages/Dashboard/components/Model";
+import AddTodo from "../pages/Dashboard/pages/AddTodo";
+import Dashboard from "../pages/Dashboard/pages/Dashboard";
+import Settings from "../pages/Dashboard/pages/Settings";
+import UserDetails from "../pages/Dashboard/pages/UserDetails";
+import LandingPage from "../pages/Home/LandingPage";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/qr-verification",
+    element: <QrVerification />,
   },
   {
     path: "/dashboard",

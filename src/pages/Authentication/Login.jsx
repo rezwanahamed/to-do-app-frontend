@@ -28,21 +28,23 @@ function Login() {
     }
   };
 
-
   const onOtpSubmit = async (data) => {
     const payload = {
-      user: user?.userId,
-      otp: data,
+      userId: user?.userId,
+      code: data.otp,
     };
+
+    console.log("payload", payload);
     try {
       const response = await otpCreate(payload);
+      console.log("response", response);  
       if (response?.status === 200) {
         reset();
         toast.success("Otp verification successful");
         window.location.href = "/dashboard";
       }
     } catch (error) {
-      console.error("Error logging in:", error);
+      console.error("Error verifying OTP:", error);
     }
   };
 
@@ -54,7 +56,7 @@ function Login() {
             Enter your 6 digit OTP
           </h3>
 
-          <form onSubmit={onOtpSubmit(onSubmit)} className="mt-6 space-y-4">
+          <form onSubmit={handleSubmit(onOtpSubmit)} className="mt-6 space-y-4">
             <div>
               <label
                 htmlFor="otp"
@@ -63,7 +65,7 @@ function Login() {
                 OTP
               </label>
               <input
-                type="text"
+                type="number"
                 id="otp"
                 {...register("otp")}
                 placeholder="your otp here"

@@ -50,7 +50,7 @@ const appLogos = [
 function LandingPage() {
   return (
     <>
-      <div className="nav-section mx-auto flex w-[70rem] items-center justify-between px-10 py-5">
+      <div className="nav-section mx-auto hidden w-[70rem] items-center justify-between px-10 py-5 md:flex">
         <div className="left-part w-[20%]">
           <img src={logo} alt="app logo" className="h-auto w-8" />
         </div>
@@ -101,15 +101,15 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="wrapper mt-[-3rem] flex h-screen w-screen flex-col items-center justify-center">
+      <div className="wrapper md:mt-[-3rem] flex h-screen w-screen flex-col items-center justify-center">
         <img src={hero} className="h-[20rem] w-[20rem]" alt="task management" />
         <div className="center-content flex w-full items-center justify-center">
-          <h2 className="font-europa w-[20%] text-center text-3xl">
+          <h2 className="font-europa md:w-[20%] text-center text-3xl">
             Say <span className="font-europa-italic">Hello</span> to the new era
             on task <span className="font-europa-italic">management</span>{" "}
           </h2>
         </div>
-        <p className="font-geist mt-3 w-[25%] text-center text-sm font-[400] tracking-wider text-gray-400">
+        <p className="font-geist mt-3 w-full md:w-[25%] text-center text-sm font-[400] tracking-wider text-gray-400">
           Stay organized and boost productivity with TaskFlow – your smart,
           simple, and efficient to-do app.
         </p>
@@ -137,9 +137,9 @@ function LandingPage() {
       </div>
 
       <div className="wrapper flex flex-col items-center justify-center">
-        <div className="app-supported-section mt-10 flex w-[70rem] items-center justify-center">
+        <div className="app-supported-section mt-10 flex w-screen items-center justify-center md:w-[70rem]">
           <Marquee gradient={true} speed={50}>
-            <div className="ml-14 flex gap-14">
+            <div className="ml-14 flex gap-8 md:gap-14">
               {appLogos.map((logo, index) => (
                 <img
                   key={index}

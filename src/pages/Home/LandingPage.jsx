@@ -101,15 +101,15 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="wrapper md:mt-[-3rem] flex h-screen w-screen flex-col items-center justify-center">
+      <div className="wrapper flex w-screen flex-col items-center justify-center px-4 md:mt-[-3rem] md:h-screen md:px-0">
         <img src={hero} className="h-[20rem] w-[20rem]" alt="task management" />
         <div className="center-content flex w-full items-center justify-center">
-          <h2 className="font-europa md:w-[20%] text-center text-3xl">
+          <h2 className="font-europa text-center text-3xl md:w-[20%]">
             Say <span className="font-europa-italic">Hello</span> to the new era
             on task <span className="font-europa-italic">management</span>{" "}
           </h2>
         </div>
-        <p className="font-geist mt-3 w-full md:w-[25%] text-center text-sm font-[400] tracking-wider text-gray-400">
+        <p className="font-geist mt-3 w-full text-center text-sm font-[400] tracking-wider text-gray-400 md:w-[25%]">
           Stay organized and boost productivity with TaskFlow – your smart,
           simple, and efficient to-do app.
         </p>
@@ -153,12 +153,12 @@ function LandingPage() {
         </div>
 
         {/* bento layout */}
-        <section className="bento-layout items-center gap-2 space-y-2 py-20 md:flex md:space-y-0">
+        <section className="bento-layout w-full items-center justify-between gap-2 space-y-2 px-4 py-20 md:flex md:w-[70rem] md:space-y-0 md:px-0">
           <div className="md:grid-row-2 grid gap-2">
-            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14204715/file/original-e64a3775ffa1b9133739774908aadda7.jpg?resize=1504x941&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
-            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281050/file/original-6838cb6a8800981aa20047b069c0b740.jpg?resize=1504x1128&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
+            <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14204715/file/original-e64a3775ffa1b9133739774908aadda7.jpg?resize=1504x941&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[35rem]"></div>
+            <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281050/file/original-6838cb6a8800981aa20047b069c0b740.jpg?resize=1504x1128&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[35rem]"></div>
           </div>
-          <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat md:h-[30.5rem] md:w-[30rem]"></div>
+          <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat md:h-[30.5rem] md:w-full"></div>
         </section>
 
         <div className="bottom-title w-full space-y-6 pb-10 text-center md:w-[50rem]">
@@ -176,15 +176,15 @@ function LandingPage() {
         </div>
 
         {/* google sink */}
-        <section className="google-bento-layout grid w-screen grid-cols-1 items-start gap-2 py-20 md:flex md:w-[60rem]">
-          <div className="left-part">
-            <h2 className="font-geist text-3xl md:w-[80%]">
+        <section className="google-bento-layout grid w-screen grid-cols-1 items-start gap-2 px-4 py-20 md:flex md:w-[70rem]">
+          <div className="left-part ">
+            <h2 className="font-geist text-center text-3xl md:w-[80%] md:text-left">
               Seamlessly Syncing and Managing Tasks with{" "}
               <span className="font-europa-italic text-4xl tracking-[2px]">
                 Google Calendar
               </span>
             </h2>
-            <p className="font-geist mt-5 w-[90%] text-xl font-medium text-gray-500">
+            <p className="font-geist mt-5 md:w-[90%] text-center text-xl font-medium text-gray-500 md:text-left">
               Learn how to efficiently organize, schedule, and manage your tasks
               using Google Calendar. This guide covers step-by-step instructions
               for creating, editing, and syncing tasks, setting reminders, and
@@ -194,7 +194,7 @@ function LandingPage() {
             </p>
             <button
               type="button"
-              className="text-md mt-10 mb-2 flex cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none"
+              className="text-md mx-auto mt-8 mb-15 flex cursor-pointer items-center justify-center gap-2 rounded-full bg-black px-[3rem] py-3 font-medium text-white duration-200 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 focus:outline-none md:mx-0 md:mb-2"
             >
               Get started{" "}
               <svg
@@ -214,8 +214,8 @@ function LandingPage() {
             </button>
           </div>
           <div className="md:grid-row-2 right-part grid gap-2">
-            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
-            <div className="h-[15rem] w-screen rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
+            <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
+            <div className="h-[15rem] w-full rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat md:w-[30rem]"></div>
           </div>
         </section>
       </div>

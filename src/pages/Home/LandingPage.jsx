@@ -176,9 +176,9 @@ function LandingPage() {
         </div>
 
         {/* google sink */}
-        <section className="bento-layout flex w-[60rem] items-start gap-2 py-20">
+        <section className="google-bento-layout md:flex w-[60rem] items-start gap-2 py-20">
           <div className="left-part">
-            <h2 className="font-geist w-[80%] text-3xl">
+            <h2 className="font-geist md:w-[80%] text-3xl">
               Seamlessly Syncing and Managing Tasks with{" "}
               <span className="font-europa-italic text-4xl tracking-[2px]">
                 Google Calendar
@@ -213,7 +213,7 @@ function LandingPage() {
               </svg>
             </button>
           </div>
-          <div className="grid-row-2 right-part grid gap-2">
+          <div className="md:grid-row-2 right-part grid gap-2">
             <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://cdn.dribbble.com/userupload/6328768/file/original-214105244de5be232951a75ed696373d.jpg?resize=1504x1127&vertical=center')] bg-cover bg-center bg-no-repeat"></div>
             <div className="h-[15rem] w-[30rem] rounded-lg bg-[url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/5bb2d5175456361.651189053fbec.jpg')] bg-cover bg-center bg-no-repeat"></div>
           </div>

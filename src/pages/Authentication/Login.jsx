@@ -20,7 +20,7 @@ function Login() {
       const response = await create(data);
       if (response?.status === 200) {
         reset();
-        toast.success("Login successful");
+        toast.success("Top sent to your email");
         setUser(response);
       }
     } catch (error) {
@@ -37,13 +37,16 @@ function Login() {
     console.log("payload", payload);
     try {
       const response = await otpCreate(payload);
-      console.log("response", response);  
+      console.log("response", response);
       if (response?.status === 200) {
         reset();
         toast.success("Otp verification successful");
         window.location.href = "/dashboard";
       }
     } catch (error) {
+      if (error.status == 401) {
+        toast.error("Invalid OTP");
+      }
       console.error("Error verifying OTP:", error);
     }
   };

@@ -8,7 +8,7 @@ import apiEndpoints from "../../../lib/config/api";
 import appRoutes from "../../../lib/config/route";
 
 function Register() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -24,21 +24,19 @@ function Register() {
       email: data.email,
       password: data.password,
     };
-    console.log(payload);
-
     try {
       const response = await create(payload);
       console.log(response);
       if (response.status === 201) {
         toast.success("User created successfully!");
+        reset(); // Reset the form
         return;
       }
-      if (response.status === 400) {
+    } catch (error) {
+      if (error.status === 400) {
         toast.error("User already exists");
         return;
       }
-      // eslint-disable-next-line no-unused-vars
-    } catch (error) {
       toast.error("Failed to create user.");
     }
   };

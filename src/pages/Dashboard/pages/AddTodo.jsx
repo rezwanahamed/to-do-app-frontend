@@ -65,7 +65,7 @@ export default function AddTodo() {
               htmlFor="workspace-description"
               className="block text-sm font-medium text-gray-700"
             >
-              Workspace description
+              Task description
             </label>
             <textarea
               id="workspace-description"

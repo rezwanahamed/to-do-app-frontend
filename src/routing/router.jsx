@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Authentication/Login";
 import QrVerification from "../pages/Authentication/QrVerification";
 import Register from "../pages/Authentication/Register";
-import Modal from "../pages/Dashboard/components/Model";
 import AddTodo from "../pages/Dashboard/pages/AddTodo";
 import Dashboard from "../pages/Dashboard/pages/Dashboard";
 import Settings from "../pages/Dashboard/pages/Settings";
@@ -42,19 +41,29 @@ const router = createBrowserRouter([
       },
       {
         path: "user",
-        element: <UserDetails />,
+        element: (
+          <ProtectedRoute>
+            {" "}
+            <UserDetails />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: "add-todo",
-        element: <AddTodo />,
+        element: (
+          <ProtectedRoute>
+            {" "}
+            <AddTodo />,
+          </ProtectedRoute>
+        ),
       },
       {
         path: "settings",
-        element: <Settings />,
-      },
-      {
-        path: "modal",
-        element: <Modal />,
+        element: (
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

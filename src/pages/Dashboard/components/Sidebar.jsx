@@ -9,9 +9,13 @@ import {
   UserCircle,
 } from "lucide-react";
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+
 
 export default function DashboardSidebar({ children }) {
+  const { logout } = useContext(AuthContext);
   return (
     <div className="font-geist">
       <button
@@ -171,12 +175,9 @@ export default function DashboardSidebar({ children }) {
               </Link>
             </li>
             <li className="pt-4">
-              <Link
-                to={"/dashboard/user"}
-                className="group flex items-center justify-center rounded-lg border border-blue-600 bg-blue-600 p-2 text-white transition duration-75 hover:bg-transparent hover:text-blue-600"
-              >
+              <button onClick={()=>logout()} className="cursor-pointer group flex w-full items-center justify-center rounded-lg border border-blue-600 bg-blue-600 p-2 text-white transition duration-75 hover:bg-transparent hover:text-blue-600">
                 <span>Logout</span>
-              </Link>
+              </button>
             </li>
           </ul>
         </div>

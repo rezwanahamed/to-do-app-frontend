@@ -1,9 +1,9 @@
 import { AlarmClock, CheckCheck, Settings2, Siren, X } from "lucide-react";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import useCrud from "../../../../hooks/swrHooks";
 import apiEndpoints from "../../../../lib/config/api";
 import Model from "../components/Model";
-import moment from "moment";
 
 export default function Dashboard() {
   const [dateFilter, setDateFilter] = React.useState("All");
@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState([]);
 
-  const { data: todo_data } = useCrud(apiEndpoints.getTodos);
+  const { data: todo_data } = useCrud(`${apiEndpoints.getTodos}?limit=6`);
 
   useEffect(() => {
     setTodos(todo_data?.data);
@@ -93,7 +93,7 @@ export default function Dashboard() {
                 <div className="truncate px-3 py-2">
                   <p className="truncate text-xs text-gray-500">Created</p>
                   <p className="truncate text-sm font-medium text-gray-900">
-                    {moment(todo?.createdAt).startOf('hour').fromNow()}
+                    {moment(todo?.createdAt).startOf("hour").fromNow()}
                   </p>
                 </div>
               </div>

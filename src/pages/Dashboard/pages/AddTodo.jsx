@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import useCrud from "../../../../hooks/swrHooks";
 import apiEndpoints from "../../../../lib/config/api";
 import { AuthContext } from "../../../context/AuthContext";
@@ -9,6 +10,7 @@ export default function AddTodo() {
   const { register, handleSubmit, reset } = useForm();
   const { user } = useContext(AuthContext);
   const { create } = useCrud(apiEndpoints.addTodo);
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     const payload = {
@@ -23,10 +25,16 @@ export default function AddTodo() {
       await create(payload);
       toast.success("Todo added successfully!");
       reset();
+      navigate("/dashboard");
       // eslint-disable-next-line no-unused-vars
     } catch (error) {
       toast.error("Failed to add todo. Please try again.");
     }
+  };
+
+  const submitCancel = () => {
+    reset();
+    navigate("/dashboard");
   };
 
   return (
@@ -110,6 +118,7 @@ export default function AddTodo() {
         </div>
         <div className="mt-10 flex items-center justify-end space-x-4">
           <button
+            onClick={() => submitCancel()}
             type="button"
             className="cursor-pointer rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-700 duration-300 hover:bg-red-600 hover:text-white"
           >

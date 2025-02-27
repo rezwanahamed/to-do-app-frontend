@@ -1,13 +1,15 @@
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
-import App from "./app";
-import "./styles/index.css";
 import { Toaster } from "react-hot-toast";
+import App from "./app";
+import { AuthProvider } from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <Toaster />
-    <App />
+    <AuthProvider>
+      <Toaster />
+      <App />
+    </AuthProvider>
   </StrictMode>,
 );

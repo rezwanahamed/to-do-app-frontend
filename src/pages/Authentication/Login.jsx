@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useCrud from "../../../hooks/swrHooks";
 import apiEndpoints from "../../../lib/config/api";
 import appRoutes from "../../../lib/config/route";
+import { encryptData } from "../../../utils/functions";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +42,9 @@ function Login() {
       if (response?.status === 200) {
         reset();
         toast.success("Otp verification successful");
+
+        const encryptedToken = encryptData(response.accessToken);
+        localStorage.setItem("token", encryptedToken); 
         window.location.href = "/dashboard";
       }
     } catch (error) {

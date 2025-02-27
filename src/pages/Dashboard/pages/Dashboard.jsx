@@ -18,7 +18,7 @@ export default function Dashboard() {
   const [priorityFilter, setPriorityFilter] = React.useState("All");
   const [isOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState([]);
-  const [selectedTodo, settSelectedTodo] = useState()
+  const [selectedTodo, settSelectedTodo] = useState();
 
   useEffect(() => {
     const fetchData = async () => {

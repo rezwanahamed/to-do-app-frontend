@@ -58,7 +58,7 @@ export default function CompletedTasks() {
                     <div className="truncate px-3 py-2">
                       <p className="truncate text-xs text-gray-500">Created</p>
                       <p className="truncate text-sm font-medium text-gray-900">
-                        {moment(todo?.updatedAt).startOf("hour").fromNow()}
+                        {moment(todo?.createdAt).calendar()}
                       </p>
                     </div>
                   </div>

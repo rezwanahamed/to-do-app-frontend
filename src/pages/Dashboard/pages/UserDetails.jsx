@@ -1,11 +1,14 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
+
 export default function UserDetails() {
+  const { user } = useContext(AuthContext);
+  console.warn(user);
   return (
     <div className="sm:mx-auto sm:max-w-2xl md:mt-20">
-      <h3 className="text-lg font-semibold text-gray-900">
-        Register to workspace
-      </h3>
+      <h3 className="text-lg font-semibold text-gray-900">User Details</h3>
       <p className="mt-1 text-sm leading-6 text-gray-600">
-        Take a few moments to register for your company&apos;s workspace
+        Your profile information here.
       </p>
       <form action="#" method="post" className="mt-8">
         <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">
@@ -25,6 +28,7 @@ export default function UserDetails() {
               placeholder="First name"
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
+              disabled
             />
           </div>
           <div className="col-span-full sm:col-span-3">
@@ -43,6 +47,7 @@ export default function UserDetails() {
               placeholder="Last name"
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
+              disabled
             />
           </div>
           <div className="col-span-full">
@@ -61,6 +66,8 @@ export default function UserDetails() {
               placeholder="Email"
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
+              disabled
+              defaultValue={user?.email}
             />
           </div>
           <div className="col-span-full">
@@ -76,6 +83,7 @@ export default function UserDetails() {
               name="address"
               autoComplete="street-address"
               placeholder="Address"
+              disabled
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
             />
           </div>
@@ -92,6 +100,7 @@ export default function UserDetails() {
               name="city"
               autoComplete="address-level2"
               placeholder="City"
+              disabled
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
             />
           </div>
@@ -108,6 +117,7 @@ export default function UserDetails() {
               name="state"
               autoComplete="address-level1"
               placeholder="State"
+              disabled
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
             />
           </div>
@@ -124,11 +134,12 @@ export default function UserDetails() {
               name="postal-code"
               autoComplete="postal-code"
               placeholder="Postal code"
+              disabled
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
             />
           </div>
         </div>
-        <div className="flex items-center justify-end space-x-4 mt-10">
+        <div className="mt-10 flex items-center justify-end space-x-4">
           <button
             type="button"
             className="rounded-md bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
@@ -137,6 +148,7 @@ export default function UserDetails() {
           </button>
           <button
             type="submit"
+            disabled
             className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
           >
             Submit

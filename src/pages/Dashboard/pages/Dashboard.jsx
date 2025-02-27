@@ -1,122 +1,21 @@
 import { AlarmClock, CheckCheck, Settings2, Siren, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useCrud from "../../../../hooks/swrHooks";
+import apiEndpoints from "../../../../lib/config/api";
 import Model from "../components/Model";
-
-const data = [
-  {
-    name: "Emma Bern",
-    initial: "EB",
-    textColor: "text-blue-800",
-    bgColor: "bg-blue-100",
-    email: "e.bern@gmail.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "member",
-      },
-      {
-        type: "Last active",
-        value: "1d ago",
-      },
-    ],
-  },
-  {
-    name: "Aaron McFlow",
-    initial: "AM",
-    textColor: "text-pink-800",
-    bgColor: "bg-pink-100",
-    email: "a.flow@acme.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "admin",
-      },
-      {
-        type: "Last active",
-        value: "2min ago",
-      },
-    ],
-  },
-  {
-    name: "Thomas Palstein",
-    initial: "TP",
-    textColor: "text-emerald-800",
-    bgColor: "bg-emerald-100",
-    email: "t.palstein@acme.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "admin",
-      },
-      {
-        type: "Last active",
-        value: "18min ago",
-      },
-    ],
-  },
-  {
-    name: "Sarah Johnson",
-    initial: "SJ",
-    textColor: "text-orange-800",
-    bgColor: "bg-orange-100",
-    email: "s.johnson@gmail.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "member",
-      },
-      {
-        type: "Last active",
-        value: "3h ago",
-      },
-    ],
-  },
-  {
-    name: "David Smith",
-    initial: "DS",
-    textColor: "text-indigo-800",
-    bgColor: "bg-indigo-100",
-    email: "d.smith@gmail.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "guest",
-      },
-      {
-        type: "Last active",
-        value: "4h ago",
-      },
-    ],
-  },
-  {
-    name: "Megan Brown",
-    initial: "MB",
-    textColor: "text-yellow-800",
-    bgColor: "bg-yellow-100",
-    email: "m.brown@gmail.com",
-    href: "#",
-    details: [
-      {
-        type: "Role",
-        value: "admin",
-      },
-      {
-        type: "Last active",
-        value: "1d ago",
-      },
-    ],
-  },
-];
+import moment from "moment";
 
 export default function Dashboard() {
   const [dateFilter, setDateFilter] = React.useState("All");
   const [priorityFilter, setPriorityFilter] = React.useState("All");
   const [isOpen, setIsOpen] = useState(false);
+  const [todos, setTodos] = useState([]);
+
+  const { data: todo_data } = useCrud(apiEndpoints.getTodos);
+
+  useEffect(() => {
+    setTodos(todo_data?.data);
+  }, [todo_data]);
 
   const handleFilterDateChange = (event) => {
     setDateFilter(event.target.value);
@@ -128,9 +27,11 @@ export default function Dashboard() {
   return (
     <>
       <div className="px-5 py-3">
-        <div className="md:flex items-center justify-between space-x-2">
-          <h3 className="md:text-xl font-semibold text-gray-900 mb-4 md:mb-0">All To-Do</h3>
-          
+        <div className="items-center justify-between space-x-2 md:flex">
+          <h3 className="mb-4 font-semibold text-gray-900 md:mb-0 md:text-xl">
+            All To-Do
+          </h3>
+
           <div className="button-group flex gap-3">
             <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
               <AlarmClock className="h-4 w-4" />
@@ -165,34 +66,36 @@ export default function Dashboard() {
         </div>
         <div className="my-3 mb-2 h-px bg-gray-200" /> {/* Custom Divider */}
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {data.map((member) => (
+          {todos?.map((todo) => (
             <div
-              key={member.name}
+              key={todo?._id}
               className="group relative rounded-lg border border-gray-200 bg-white p-4 transition-all duration-200 hover:border-blue-500"
             >
               <div className="flex items-center space-x-4">
                 <div className="truncate">
                   <p className="truncate text-base font-medium text-gray-900">
-                    <a href={member.href} className="focus:outline-none">
-                      {member.name}
+                    <a href="#" className="focus:outline-none">
+                      {todo?.title}
                     </a>
                   </p>
                   <p className="truncate text-sm text-gray-500">
-                    {member.email}
+                    {todo?.description}
                   </p>
                 </div>
               </div>
               <div className="mt-6 grid grid-cols-2 divide-x divide-gray-200 border-t border-gray-200">
-                {member.details.map((item) => (
-                  <div key={item.type} className="truncate px-3 py-2">
-                    <p className="truncate text-xs text-gray-500">
-                      {item.type}
-                    </p>
-                    <p className="truncate text-sm font-medium text-gray-900">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
+                <div className="truncate px-3 py-2">
+                  <p className="truncate text-xs text-gray-500">Priority</p>
+                  <p className="truncate text-sm font-medium text-gray-900">
+                    {todo?.priority}
+                  </p>
+                </div>
+                <div className="truncate px-3 py-2">
+                  <p className="truncate text-xs text-gray-500">Created</p>
+                  <p className="truncate text-sm font-medium text-gray-900">
+                    {moment(todo?.createdAt).startOf('hour').fromNow()}
+                  </p>
+                </div>
               </div>
               <div className="divide-x divide-gray-200 border-t border-gray-200 pt-3">
                 <div className="button-group flex w-full gap-3">

@@ -3,7 +3,6 @@ import { AuthContext } from "../../../context/AuthContext";
 
 export default function UserDetails() {
   const { user } = useContext(AuthContext);
-  console.warn(user);
   return (
     <div className="sm:mx-auto sm:max-w-2xl md:mt-20">
       <h3 className="text-lg font-semibold text-gray-900">User Details</h3>

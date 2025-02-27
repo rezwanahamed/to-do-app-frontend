@@ -13,6 +13,7 @@ import Settings from "../pages/Dashboard/pages/Settings";
 import UserDetails from "../pages/Dashboard/pages/UserDetails";
 import LandingPage from "../pages/Home/LandingPage";
 import ProtectedRoute from "../ProtectedRoute";
+import RestrictedRoute from "../RestrictedRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 const router = createBrowserRouter([
@@ -22,15 +23,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <RestrictedRoute>
+        <Login />
+      </RestrictedRoute>
+    ),
   },
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <RestrictedRoute>
+        <Register />,
+      </RestrictedRoute>
+    ),
   },
   {
     path: "/qr-verification",
-    element: <QrVerification />,
+    element: (
+      <RestrictedRoute>
+        <QrVerification />,
+      </RestrictedRoute>
+    ),
   },
   {
     path: "/dashboard",

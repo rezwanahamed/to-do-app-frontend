@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,18 +22,19 @@ export default function Model({ setIsOpen, modalData }) {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    const payload = {
-      title: data.title,
-      description: data.description,
-      createdAt: data.date,
-      priority: data.priority,
-    };
-    console.log(payload)
+    const payload = {};
+    if (data.title) payload.title = data.title;
+    if (data.description) payload.description = data.description;
+    if (data.date) payload.createdAt = data.date;
+    if (data.priority) payload.priority = data.priority;
+
+    console.log(payload);
     try {
       await axiosInstance.patch(
         `${apiEndpoints.updateTodo}/${modalData}`,
@@ -41,7 +43,6 @@ export default function Model({ setIsOpen, modalData }) {
       toast.success("Todo updated successfully!");
       reset();
       setIsOpen(false);
-    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       toast.error("Failed to update todo. Please try again.");
     }
@@ -142,13 +143,11 @@ export default function Model({ setIsOpen, modalData }) {
                   </div>
                   <input
                     type="text"
-                    defaultValue={todos.data?.description}
                     id="title"
                     {...register("title")}
                     autoComplete="given-name"
                     placeholder="First name"
                     className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
-                    required
                   />
                 </div>
                 <div>
@@ -165,7 +164,6 @@ export default function Model({ setIsOpen, modalData }) {
                   </div>
                   <textarea
                     id="description"
-                    defaultValue={todos.data?.description}
                     {...register("description")}
                     rows={4}
                     className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
@@ -187,7 +185,6 @@ export default function Model({ setIsOpen, modalData }) {
 
                   <select
                     id="visibility"
-                    defaultValue={todos.data?.priority}
                     {...register("priority")}
                     placeholder="Select priority"
                     className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
@@ -212,12 +209,10 @@ export default function Model({ setIsOpen, modalData }) {
                   </div>
                   <input
                     type="datetime-local"
-                    defaultValue={todos.data?.createdAt}
                     id="date"
                     {...register("date")}
                     placeholder="Enter your task completion date"
                     className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
-                    required
                   />
                 </div>
               </div>

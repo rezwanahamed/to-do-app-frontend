@@ -7,15 +7,15 @@ import {
   X,
 } from "lucide-react";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import apiEndpoints from "../../../../lib/config/api";
 import axiosInstance from "../../../../lib/config/axiosInstance";
 import Model from "../components/Model";
 
 export default function Dashboard() {
-  const [dateFilter, setDateFilter] = React.useState("All");
-  const [priorityFilter, setPriorityFilter] = React.useState("All");
+  const [dateFilter, setDateFilter] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState([]);
   const [selectedTodo, settSelectedTodo] = useState();
@@ -24,7 +24,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get(
-          `${apiEndpoints.getTodos}?status=Pending`,
+          `${apiEndpoints.getTodos}?status=Pending&date=${dateFilter}&priority=${priorityFilter}&limit=6`,
         );
         setTodos(response.data.data);
       } catch (error) {
@@ -33,6 +33,7 @@ export default function Dashboard() {
     };
 
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos]);
 
   const handleFilterDateChange = (event) => {
@@ -66,48 +67,49 @@ export default function Dashboard() {
   };
 
   return (
-    <>
-      {todos.length > 0 ? (
-        <>
-          <div className="px-5 py-3">
-            <div className="items-center justify-between space-x-2 md:flex">
-              <h3 className="mb-4 font-semibold text-gray-900 md:mb-0 md:text-xl">
-                All To-Do
-              </h3>
+    <div className="px-5 py-3">
+      <div className="items-center justify-between space-x-2 md:flex">
+        <h3 className="mb-4 font-semibold text-gray-900 md:mb-0 md:text-xl">
+          All To-Do
+        </h3>
 
-              <div className="button-group flex gap-3">
-                <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
-                  <AlarmClock className="h-4 w-4" />
-                  <select
-                    value={dateFilter}
-                    onChange={handleFilterDateChange}
-                    className="cursor-pointer border-0 text-sm focus-visible:ring-0"
-                  >
-                    <option value="">All Dates</option>
-                    <option value="Today">Today</option>
-                    <option value="This Week">This Week</option>
-                    <option value="This Month">This Month</option>
-                  </select>
-                </div>
+        <div className="button-group flex gap-3">
+          <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
+            <AlarmClock className="h-4 w-4" />
+            <select
+              value={dateFilter}
+              onChange={handleFilterDateChange}
+              className="cursor-pointer border-0 text-sm focus-visible:ring-0"
+            >
+              <option value="">All Dates</option>
+              <option value="Today">Today</option>
+              <option value="This Week">This Week</option>
+              <option value="This Month">This Month</option>
+            </select>
+          </div>
 
-                <div className="button-group flex gap-2">
-                  <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
-                    <Siren className="h-4 w-4" />
-                    <select
-                      value={priorityFilter}
-                      onChange={handleFilterPriorityChange}
-                      className="cursor-pointer border-0 text-sm focus-visible:ring-0"
-                    >
-                      <option value="">All status</option>
-                      <option value="High">High</option>
-                      <option value="Medium">Medium</option>
-                      <option value="Low">Low</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+          <div className="button-group flex gap-2">
+            <div className="font-geist flex cursor-pointer items-center justify-center rounded-md border border-slate-200 pr-1 pl-5 text-sm text-slate-600">
+              <Siren className="h-4 w-4" />
+              <select
+                value={priorityFilter}
+                onChange={handleFilterPriorityChange}
+                className="cursor-pointer border-0 text-sm focus-visible:ring-0"
+              >
+                <option value="">All status</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
             </div>
-            <div className="my-3 mb-2 h-px bg-gray-200" />{" "}
+          </div>
+        </div>
+      </div>
+      <div className="my-3 mb-2 h-px bg-gray-200" />
+
+      <>
+        {todos.length > 0 ? (
+          <>
             {/* Custom Divider */}
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {todos?.map((todo) => (
@@ -169,15 +171,15 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
+          </>
+        ) : (
+          <div className="flex h-96 items-center justify-center gap-2 text-gray-400">
+            <p>No task found</p> <Ghost className="h-4 w-4" />
           </div>
-        </>
-      ) : (
-        <div className="flex h-96 items-center justify-center gap-2 text-gray-400">
-          <p>No task found</p> <Ghost className="h-4 w-4" />
-        </div>
-      )}
+        )}
 
-      {isOpen && <Model setIsOpen={setIsOpen} modalData={selectedTodo} />}
-    </>
+        {isOpen && <Model setIsOpen={setIsOpen} modalData={selectedTodo} />}
+      </>
+    </div>
   );
 }

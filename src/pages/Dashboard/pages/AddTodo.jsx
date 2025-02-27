@@ -49,7 +49,7 @@ export default function AddTodo() {
         <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-6">
           <div className="col-span-full sm:col-span-3">
             <label
-              htmlFor="first-name"
+              htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
               Title
@@ -59,7 +59,7 @@ export default function AddTodo() {
               id="title"
               {...register("title")}
               autoComplete="given-name"
-              placeholder="First name"
+              placeholder="Enter title"
               className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
               required
             />

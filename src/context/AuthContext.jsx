@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import appRoutes from "../../lib/config/route";
 import { decryptData } from "../../utils/functions";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {

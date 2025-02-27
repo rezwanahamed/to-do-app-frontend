@@ -1,25 +1,59 @@
 import { CheckCheck, Ghost, Settings2, X } from "lucide-react";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import useCrud from "../../../../hooks/swrHooks";
+import toast from "react-hot-toast";
 import apiEndpoints from "../../../../lib/config/api";
+import axiosInstance from "../../../../lib/config/axiosInstance";
 import Model from "../components/Model";
 
 export default function HighPriorityTask() {
   const [isOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState([]);
-
-  const { data: todo_data } = useCrud(`${apiEndpoints.getTodos}?priority=High`);
-  console.log(todo_data);
+  const [selectedTodo, settSelectedTodo] = useState();
 
   useEffect(() => {
-    setTodos(todo_data?.data);
-  }, [todo_data]);
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get(
+          `${apiEndpoints.getTodos}?priority=High`,
+        );
+        setTodos(response.data.data);
+      } catch (error) {
+        console.error("Failed to fetch todos:", error);
+      }
+    };
+
+    fetchData();
+  }, [todos]);
+
+  const handleUpdateTodo = async (id) => {
+    try {
+      await axiosInstance.patch(`${apiEndpoints.updateTodo}/${id}`, {
+        status: "Completed",
+      });
+
+      toast.success("Todo updated successfully!");
+    } catch (error) {
+      toast.error("Failed to update todo. Please try again.");
+      console.error("Failed to update todo:", error);
+    }
+  };
+  const handleDeleteTodo = async (id) => {
+    try {
+      await axiosInstance.delete(`${apiEndpoints.deleteTodo}/${id}`);
+
+      toast.success("Todo deleted successfully!");
+    } catch (error) {
+      toast.error("Failed to delete todo. Please try again.");
+      console.error("Failed to update todo:", error);
+    }
+  };
 
   return (
     <>
-      {todos && todos.length > 0 ? (
+      {todos.length > 0 ? (
         <>
+          {" "}
           <div className="px-5 py-3">
             <div className="items-center justify-between space-x-2 md:flex">
               <h3 className="pb-2 font-semibold text-gray-900 md:mb-0 md:text-xl">
@@ -62,23 +96,29 @@ export default function HighPriorityTask() {
                   </div>
                   <div className="divide-x divide-gray-200 border-t border-gray-200 pt-3">
                     <div className="button-group flex w-full gap-3">
-                      <button className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-blue-500 bg-blue-500 py-2.5 text-sm text-white transition-all duration-300 ease-in-out hover:border-blue-500 hover:bg-transparent hover:text-blue-500">
+                      <button
+                        onClick={() => handleUpdateTodo(todo?._id)}
+                        className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-blue-500 bg-blue-500 py-2.5 text-sm text-white transition-all duration-300 ease-in-out hover:border-blue-500 hover:bg-transparent hover:text-blue-500"
+                      >
                         Complete <CheckCheck className="h-4 w-4" />
                       </button>
                       <button
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => {
+                          settSelectedTodo(todo?._id);
+                          setIsOpen(true);
+                        }}
                         className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-blue-500 bg-transparent py-2.5 text-sm text-blue-500 transition-all duration-300 ease-in-out hover:border-blue-500 hover:bg-blue-500 hover:text-white"
                       >
                         Edit <Settings2 className="h-4 w-4" />
                       </button>
                     </div>
                   </div>
-                  <span
-                    className="pointer-events-none absolute top-4 right-4 rounded-full p-1 text-gray-400 transition-all group-hover:bg-gray-100 group-hover:text-slate-700"
-                    aria-hidden={true}
+                  <button
+                    onClick={() => handleDeleteTodo(todo?._id)}
+                    className="absolute top-4 right-4 cursor-pointer rounded-full p-1 text-gray-400 transition-all group-hover:bg-gray-100 group-hover:text-slate-700"
                   >
                     <X className="h-4 w-4" />
-                  </span>
+                  </button>
                 </div>
               ))}
             </div>
@@ -90,7 +130,7 @@ export default function HighPriorityTask() {
         </div>
       )}
 
-      {isOpen && <Model setIsOpen={setIsOpen} />}
+      {isOpen && <Model setIsOpen={setIsOpen} modalData={selectedTodo} />}
     </>
   );
 }

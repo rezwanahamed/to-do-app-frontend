@@ -1,12 +1,58 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import apiEndpoints from "../../../../lib/config/api";
+import axiosInstance from "../../../../lib/config/axiosInstance";
 
-export default function Model({ setIsOpen }) {
+export default function Model({ setIsOpen, modalData }) {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get(
+          `${apiEndpoints.updateTodo}/${modalData}`,
+        );
+        setTodos(response.data);
+      } catch (error) {
+        console.error("Failed to fetch todos:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = async (data) => {
+    const payload = {
+      title: data.title,
+      description: data.description,
+      createdAt: data.date,
+      priority: data.priority,
+    };
+    console.log(payload)
+    try {
+      await axiosInstance.patch(
+        `${apiEndpoints.updateTodo}/${modalData}`,
+        payload,
+      );
+      toast.success("Todo updated successfully!");
+      reset();
+      setIsOpen(false);
+    // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      toast.error("Failed to update todo. Please try again.");
+    }
+  };
+
   return (
     <>
       <div className="fixed top-0 right-0 left-0 z-50 h-full w-full bg-black opacity-80"></div>
       <div className="fixed inset-0 z-50 flex items-center justify-center">
         <div className="overflow-visible rounded-lg bg-white sm:w-4xl">
-          <form action="#" method="POST">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="absolute top-0 right-0 pt-3 pr-3">
               <button
                 type="button"
@@ -29,7 +75,7 @@ export default function Model({ setIsOpen }) {
               </button>
             </div>
             <div className="border-b border-gray-200 px-6 py-4">
-              <h3 className="font-medium text-gray-900">Add application</h3>
+              <h3 className="font-medium text-gray-900">Update task</h3>
             </div>
             <div className="flex flex-col-reverse md:flex-row">
               <div className="flex flex-col justify-between md:w-80 md:border-r md:border-gray-200">
@@ -50,28 +96,18 @@ export default function Model({ setIsOpen }) {
                           />
                         </svg>
                       </div>
-                      <div>
-                        <h3 className="text-base font-medium text-gray-900">
-                          Astro Analytics
+                      <div className="w-full md:w-[14rem]">
+                        <h3 className="truncate text-base font-medium text-gray-900">
+                          {todos.data?.title}
                         </h3>
-                        <p className="mt-0.5 text-base text-gray-500">
-                          Lorem ipsum dolor sit amet
-                        </p>
                       </div>
                     </div>
-                    <div className="my-6 border-t border-gray-200"></div>
+                    <div className="my-6 w-[15rem] border-t border-gray-200"></div>
                     <h4 className="text-base font-medium text-gray-900">
                       Description:
                     </h4>
-                    <p className="mt-1 text-base leading-6 text-gray-500">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-                    </p>
-                    <h4 className="mt-6 text-base font-medium text-gray-900">
-                      Supported functionality:
-                    </h4>
-                    <p className="mt-1 text-base leading-6 text-gray-500">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod.
+                    <p className="mt-1 truncate text-base leading-6 text-gray-500">
+                      {todos.data?.description}
                     </p>
                   </div>
                 </div>
@@ -83,8 +119,11 @@ export default function Model({ setIsOpen }) {
                   >
                     Cancel
                   </button>
-                  <button className="cursor-pointer rounded-md bg-blue-500 px-3 py-2 text-sm font-medium whitespace-nowrap text-white hover:bg-blue-600">
-                    Connect
+                  <button
+                    type="submit"
+                    className="cursor-pointer rounded-md bg-blue-500 px-3 py-2 text-sm font-medium whitespace-nowrap text-white hover:bg-blue-600"
+                  >
+                    Update
                   </button>
                 </div>
               </div>
@@ -98,19 +137,19 @@ export default function Model({ setIsOpen }) {
                       htmlFor="connection"
                       className="text-base font-medium text-gray-900"
                     >
-                      Choose a connection
+                      Title
                     </label>
                   </div>
-                  <select
-                    name="connection"
-                    id="connection"
-                    defaultValue="1"
-                    className="mt-4 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="1">postgres_live</option>
-                    <option value="2">postgres_test</option>
-                    <option value="3">bigQuery_live</option>
-                  </select>
+                  <input
+                    type="text"
+                    defaultValue={todos.data?.description}
+                    id="title"
+                    {...register("title")}
+                    autoComplete="given-name"
+                    placeholder="First name"
+                    className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+                    required
+                  />
                 </div>
                 <div>
                   <div className="flex items-center space-x-3">
@@ -121,46 +160,18 @@ export default function Model({ setIsOpen }) {
                       htmlFor="dataset"
                       className="text-base font-medium text-gray-900"
                     >
-                      Select dataset
+                      Description
                     </label>
                   </div>
-                  <select
-                    name="dataset"
-                    id="dataset"
-                    defaultValue="1"
-                    className="mt-4 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="1">starterkit_sales</option>
-                    <option value="2">starterkit_ecommerce</option>
-                    <option value="3">starterkit_logs</option>
-                  </select>
+                  <textarea
+                    id="description"
+                    defaultValue={todos.data?.description}
+                    {...register("description")}
+                    rows={4}
+                    className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+                  ></textarea>
                 </div>
-                <div>
-                  <div className="flex items-center space-x-3">
-                    <div className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gray-100 text-base text-gray-700">
-                      3
-                    </div>
-                    <label
-                      htmlFor="metrics"
-                      className="text-base font-medium text-gray-900"
-                    >
-                      Select metrics to track
-                    </label>
-                  </div>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-                  </p>
-                  <select
-                    name="metrics"
-                    id="metrics"
-                    defaultValue="2"
-                    className="mt-4 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  >
-                    <option value="1">all options</option>
-                    <option value="2">log & health data</option>
-                    <option value="3">product usage data</option>
-                  </select>
-                </div>
+
                 <div>
                   <div className="flex items-center space-x-3">
                     <div className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gray-100 text-base text-gray-700">
@@ -170,22 +181,44 @@ export default function Model({ setIsOpen }) {
                       htmlFor="import-method"
                       className="text-base font-medium text-gray-900"
                     >
-                      Select import method
+                      Priority
                     </label>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-                  </p>
+
                   <select
-                    name="import-method"
-                    id="import-method"
-                    defaultValue="1"
-                    className="mt-4 w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    id="visibility"
+                    defaultValue={todos.data?.priority}
+                    {...register("priority")}
+                    placeholder="Select priority"
+                    className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
                   >
-                    <option value="1">direct query</option>
-                    <option value="2">import</option>
-                    <option value="3">direct query (incremental load)</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                    <option value="High">High</option>
                   </select>
+                </div>
+
+                <div>
+                  <div className="flex items-center space-x-3">
+                    <div className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gray-100 text-base text-gray-700">
+                      4
+                    </div>
+                    <label
+                      htmlFor="import-method"
+                      className="text-base font-medium text-gray-900"
+                    >
+                      Due date
+                    </label>
+                  </div>
+                  <input
+                    type="datetime-local"
+                    defaultValue={todos.data?.createdAt}
+                    id="date"
+                    {...register("date")}
+                    placeholder="Enter your task completion date"
+                    className="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+                    required
+                  />
                 </div>
               </div>
             </div>
@@ -198,4 +231,5 @@ export default function Model({ setIsOpen }) {
 
 Model.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
+  modalData: PropTypes.func.isRequired,
 };

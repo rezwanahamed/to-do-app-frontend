@@ -105,6 +105,7 @@ export default function useCrud(endpoint) {
     data,
     isLoading,
     isError,
+    mutate,
     create: (data) => create(endpoint, data),
     update: (id, data) => update(endpoint, id, data),
     remove: (id) => remove(endpoint, id),

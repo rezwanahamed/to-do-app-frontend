@@ -2,7 +2,6 @@ import {
   BadgePlus,
   Circle,
   CircleCheck,
-  CircleCheckBig,
   CircleDashed,
   Command,
   Settings2,
@@ -11,8 +10,8 @@ import {
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import appRoutes from "../../../../lib/config/route";
 import { AuthContext } from "../../../context/AuthContext";
-
 
 export default function DashboardSidebar({ children }) {
   const { logout } = useContext(AuthContext);
@@ -71,23 +70,10 @@ export default function DashboardSidebar({ children }) {
                 <span className="ms-2 flex-1 whitespace-nowrap">Add Task</span>
               </Link>
             </li>
+
             <li>
               <Link
-                to={"/dashboard/user"}
-                className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
-              >
-                <CircleCheck className="h-5 w-5" />
-                <span className="ms-2 flex-1 whitespace-nowrap">
-                  Total Task
-                </span>
-                <span className="ms-3 inline-flex h-3 w-3 items-center justify-center rounded-full bg-blue-100 p-3 text-sm font-medium text-blue-800">
-                  3
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"/dashboard/user"}
+                to={appRoutes.pending_task}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
                 <CircleDashed className="h-5 w-5" />
@@ -101,10 +87,10 @@ export default function DashboardSidebar({ children }) {
             </li>
             <li>
               <Link
-                to={"/dashboard/user"}
+                to={appRoutes.completed_task}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
-                <CircleCheckBig className="h-5 w-5" />
+                <CircleCheck className="h-5 w-5" />
                 <span className="ms-2 flex-1 whitespace-nowrap">
                   Completed Task
                 </span>
@@ -175,7 +161,10 @@ export default function DashboardSidebar({ children }) {
               </Link>
             </li>
             <li className="pt-4">
-              <button onClick={()=>logout()} className="cursor-pointer group flex w-full items-center justify-center rounded-lg border border-blue-600 bg-blue-600 p-2 text-white transition duration-75 hover:bg-transparent hover:text-blue-600">
+              <button
+                onClick={() => logout()}
+                className="group flex w-full cursor-pointer items-center justify-center rounded-lg border border-blue-600 bg-blue-600 p-2 text-white transition duration-75 hover:bg-transparent hover:text-blue-600"
+              >
                 <span>Logout</span>
               </button>
             </li>

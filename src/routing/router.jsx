@@ -3,7 +3,9 @@ import Login from "../pages/Authentication/Login";
 import QrVerification from "../pages/Authentication/QrVerification";
 import Register from "../pages/Authentication/Register";
 import AddTodo from "../pages/Dashboard/pages/AddTodo";
+import CompletedTasks from "../pages/Dashboard/pages/CompletedTasks";
 import Dashboard from "../pages/Dashboard/pages/Dashboard";
+import PendingTasks from "../pages/Dashboard/pages/PendingTasks";
 import Settings from "../pages/Dashboard/pages/Settings";
 import UserDetails from "../pages/Dashboard/pages/UserDetails";
 import LandingPage from "../pages/Home/LandingPage";
@@ -52,8 +54,23 @@ const router = createBrowserRouter([
         path: "add-todo",
         element: (
           <ProtectedRoute>
-            {" "}
             <AddTodo />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "pending-tasks",
+        element: (
+          <ProtectedRoute>
+            <PendingTasks />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "completed-tasks",
+        element: (
+          <ProtectedRoute>
+            <CompletedTasks />,
           </ProtectedRoute>
         ),
       },

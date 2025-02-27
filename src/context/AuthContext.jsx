@@ -39,8 +39,6 @@ export const AuthProvider = ({ children }) => {
             },
           );
 
-          console.log(response);
-
           if (!response.ok) {
             window.location.href = appRoutes.login;
             setIsLoading(false);
@@ -72,7 +70,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, isAuthenticated, isLoading, logout }}>
+    <AuthContext.Provider
+      value={{ user, token, isAuthenticated, isLoading, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

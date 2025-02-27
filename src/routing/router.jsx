@@ -5,6 +5,9 @@ import Register from "../pages/Authentication/Register";
 import AddTodo from "../pages/Dashboard/pages/AddTodo";
 import CompletedTasks from "../pages/Dashboard/pages/CompletedTasks";
 import Dashboard from "../pages/Dashboard/pages/Dashboard";
+import HighPriorityTask from "../pages/Dashboard/pages/HighPriorityTask";
+import LowPriorityTask from "../pages/Dashboard/pages/LowPriorityTask";
+import MediumPriorityTask from "../pages/Dashboard/pages/MediumPriorityTask";
 import PendingTasks from "../pages/Dashboard/pages/PendingTasks";
 import Settings from "../pages/Dashboard/pages/Settings";
 import UserDetails from "../pages/Dashboard/pages/UserDetails";
@@ -63,6 +66,30 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <PendingTasks />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "high-priority-task",
+        element: (
+          <ProtectedRoute>
+            <HighPriorityTask />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "medium-priority-task",
+        element: (
+          <ProtectedRoute>
+            <MediumPriorityTask />,
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "low-priority-task",
+        element: (
+          <ProtectedRoute>
+            <LowPriorityTask />,
           </ProtectedRoute>
         ),
       },

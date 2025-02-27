@@ -5,12 +5,12 @@ import useCrud from "../../../../hooks/swrHooks";
 import apiEndpoints from "../../../../lib/config/api";
 import Model from "../components/Model";
 
-export default function PendingTasks() {
+export default function MediumPriorityTask() {
   const [isOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState([]);
 
   const { data: todo_data } = useCrud(
-    `${apiEndpoints.getTodos}?status=Pending`,
+    `${apiEndpoints.getTodos}?priority=Medium`,
   );
   console.log(todo_data);
 
@@ -25,7 +25,7 @@ export default function PendingTasks() {
           <div className="px-5 py-3">
             <div className="items-center justify-between space-x-2 md:flex">
               <h3 className="pb-2 font-semibold text-gray-900 md:mb-0 md:text-xl">
-                All Pending Task
+                All Medium Priority Task
               </h3>
             </div>
             <div className="my-3 mb-2 h-px bg-gray-200" />{" "}
@@ -87,8 +87,8 @@ export default function PendingTasks() {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-center h-96 text-gray-400 gap-2">
-          <p>No task found</p> <Ghost className="h-4 w-4"/>
+        <div className="flex h-96 items-center justify-center gap-2 text-gray-400">
+          <p>No task found</p> <Ghost className="h-4 w-4" />
         </div>
       )}
 

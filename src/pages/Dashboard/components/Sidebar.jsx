@@ -108,7 +108,7 @@ export default function DashboardSidebar({ children }) {
             </h3>
             <li>
               <Link
-                to={"/dashboard/add-todo"}
+                to={appRoutes.high_priority_task}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
                 <Circle fill="#1C64F2" stroke="#1C64F2" className="h-4 w-4" />
@@ -117,7 +117,7 @@ export default function DashboardSidebar({ children }) {
             </li>
             <li>
               <Link
-                to={"/dashboard/user"}
+                to={appRoutes.medium_priority_task}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
                 <Circle fill="#76A9FA" stroke="#76A9FA" className="h-4 w-4" />
@@ -126,7 +126,7 @@ export default function DashboardSidebar({ children }) {
             </li>
             <li>
               <Link
-                to={"/dashboard/user"}
+                to={appRoutes.low_priority_task}
                 className="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100"
               >
                 <Circle fill="#C3DDFD" stroke="#C3DDFD" className="h-4 w-4" />

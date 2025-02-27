@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true); // Start loading
         try {
           const response = await fetch(
-            "http://localhost:5000/api/user/profile/",
+            `${import.meta.env.VITE_API_URL}/api/user/profile/`,
             {
               headers: {
                 Authorization: `Bearer ${decryptToken}`,

@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard/pages/Dashboard";
 import Settings from "../pages/Dashboard/pages/Settings";
 import UserDetails from "../pages/Dashboard/pages/UserDetails";
 import LandingPage from "../pages/Home/LandingPage";
+import ProtectedRoute from "../ProtectedRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 const router = createBrowserRouter([
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "user",

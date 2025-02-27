@@ -82,9 +82,9 @@ export default function Dashboard() {
               className="cursor-pointer border-0 text-sm focus-visible:ring-0"
             >
               <option value="">All Dates</option>
-              <option value="Today">Today</option>
-              <option value="This Week">This Week</option>
-              <option value="This Month">This Month</option>
+              <option value="today">Today</option>
+              <option value="thisWeek">This Week</option>
+              <option value="thisMonth">This Month</option>
             </select>
           </div>
 

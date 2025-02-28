@@ -21,7 +21,6 @@ export default function QrVerification() {
   }, []);
 
   const handleSubmit = async (e) => {
-    console.log({ userId: qrCode?.userId, twoFactorCode: otp });
     e.preventDefault();
     try {
       const response = await create({

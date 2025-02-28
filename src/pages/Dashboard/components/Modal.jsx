@@ -35,7 +35,6 @@ export default function Modal({ setIsOpen, modalData }) {
     if (data.date) payload.dueDate = data.date;
     if (data.priority) payload.priority = data.priority;
 
-    console.log(payload);
     try {
       await axiosInstance.patch(
         `${apiEndpoints.updateTodo}/${modalData}`,

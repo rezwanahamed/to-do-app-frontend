@@ -25,7 +25,7 @@ export default function CompletedTasks() {
           <div className="px-5 py-3">
             <div className="items-center justify-between space-x-2 md:flex">
               <h3 className="pb-2 font-semibold text-gray-900 md:mb-0 md:text-xl">
-                All Completed Task
+                Completed Task
               </h3>
             </div>
             <div className="my-3 mb-2 h-px bg-gray-200" />{" "}

@@ -35,10 +35,8 @@ function Login() {
       code: data.otp,
     };
 
-    console.log("payload", payload);
     try {
       const response = await otpCreate(payload);
-      console.log("response", response);
       if (response?.status === 200) {
         reset();
         toast.success("Otp verification successful");

@@ -3,7 +3,7 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import useCrud from "../../../../hooks/swrHooks";
 import apiEndpoints from "../../../../lib/config/api";
-import Model from "../components/Model";
+import Modal from "../components/Modal";
 
 export default function CompletedTasks() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,7 @@ export default function CompletedTasks() {
                     <div className="truncate px-3 py-2">
                       <p className="truncate text-xs text-gray-500">Created</p>
                       <p className="truncate text-sm font-medium text-gray-900">
-                        {moment(todo?.createdAt).calendar()}
+                        {moment(todo?.dueDate).calendar()}
                       </p>
                     </div>
                   </div>
@@ -86,7 +86,7 @@ export default function CompletedTasks() {
         </div>
       )}
 
-      {isOpen && <Model setIsOpen={setIsOpen} />}
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
     </>
   );
 }

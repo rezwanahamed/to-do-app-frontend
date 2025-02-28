@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import apiEndpoints from "../../../../lib/config/api";
 import axiosInstance from "../../../../lib/config/axiosInstance";
-import Model from "../components/Model";
+import Modal from "../components/Modal";
 
 export default function MediumPriorityTask() {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,7 +90,7 @@ export default function MediumPriorityTask() {
                     <div className="truncate px-3 py-2">
                       <p className="truncate text-xs text-gray-500">Created</p>
                       <p className="truncate text-sm font-medium text-gray-900">
-                        {moment(todo?.createdAt).calendar()}
+                        {moment(todo?.dueDate).calendar()}
                       </p>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function MediumPriorityTask() {
         </div>
       )}
 
-      {isOpen && <Model setIsOpen={setIsOpen} modalData={selectedTodo} />}
+      {isOpen && <Modal setIsOpen={setIsOpen} modalData={selectedTodo} />}
     </>
   );
 }

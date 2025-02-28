@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { XIcon } from "lucide-react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,7 +7,7 @@ import toast from "react-hot-toast";
 import apiEndpoints from "../../../../lib/config/api";
 import axiosInstance from "../../../../lib/config/axiosInstance";
 
-export default function Model({ setIsOpen, modalData }) {
+export default function Modal({ setIsOpen, modalData }) {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Model({ setIsOpen, modalData }) {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { register, handleSubmit, reset } = useForm();
@@ -31,7 +32,7 @@ export default function Model({ setIsOpen, modalData }) {
     const payload = {};
     if (data.title) payload.title = data.title;
     if (data.description) payload.description = data.description;
-    if (data.date) payload.createdAt = data.date;
+    if (data.date) payload.dueDate = data.date;
     if (data.priority) payload.priority = data.priority;
 
     console.log(payload);
@@ -61,18 +62,7 @@ export default function Model({ setIsOpen, modalData }) {
                 onClick={() => setIsOpen(false)}
                 aria-label="Close"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <XIcon />
               </button>
             </div>
             <div className="border-b border-gray-200 px-6 py-4">
@@ -83,32 +73,35 @@ export default function Model({ setIsOpen, modalData }) {
                 <div className="flex-1 grow">
                   <div className="border-t border-gray-200 p-6 md:border-none">
                     <div className="flex items-center space-x-3">
-                      <div className="inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 p-3">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-gray-700"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <div className="w-full md:w-[14rem]">
-                        <h3 className="truncate text-base font-medium text-gray-900">
+                      <div className="w-full">
+                        <h4 className="text-base font-medium text-gray-900">
+                          Title:
+                        </h4>
+                        <p className="mt-1 truncate text-base leading-6 text-gray-500">
                           {todos.data?.title}
-                        </h3>
+                        </p>
                       </div>
                     </div>
-                    <div className="my-6 w-[15rem] border-t border-gray-200"></div>
+                    <div className="my-6 border-t border-gray-200"></div>
                     <h4 className="text-base font-medium text-gray-900">
                       Description:
                     </h4>
                     <p className="mt-1 truncate text-base leading-6 text-gray-500">
                       {todos.data?.description}
+                    </p>
+                    <div className="my-6 border-t border-gray-200"></div>
+                    <h4 className="text-base font-medium text-gray-900">
+                      Priority:
+                    </h4>
+                    <p className="mt-1 truncate text-base leading-6 text-gray-500">
+                      {todos.data?.priority}
+                    </p>
+                    <div className="my-6 border-t border-gray-200"></div>
+                    <h4 className="text-base font-medium text-gray-900">
+                      Due Date:
+                    </h4>
+                    <p className="mt-1 truncate text-base leading-6 text-gray-500">
+                      {todos.data?.dueDate}
                     </p>
                   </div>
                 </div>
@@ -224,7 +217,7 @@ export default function Model({ setIsOpen, modalData }) {
   );
 }
 
-Model.propTypes = {
+Modal.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   modalData: PropTypes.func.isRequired,
 };

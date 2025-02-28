@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import apiEndpoints from "../../../../lib/config/api";
 import axiosInstance from "../../../../lib/config/axiosInstance";
-import Model from "../components/Model";
+import Modal from "../components/Modal";
 
 export default function Dashboard() {
   const [dateFilter, setDateFilter] = useState("");
@@ -33,7 +33,7 @@ export default function Dashboard() {
     };
 
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos]);
 
   const handleFilterDateChange = (event) => {
@@ -139,7 +139,7 @@ export default function Dashboard() {
                     <div className="truncate px-3 py-2">
                       <p className="truncate text-xs text-gray-500">Created</p>
                       <p className="truncate text-sm font-medium text-gray-900">
-                        {moment(todo?.createdAt).calendar()}
+                        {moment(todo?.dueDate).calendar()}
                       </p>
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        {isOpen && <Model setIsOpen={setIsOpen} modalData={selectedTodo} />}
+        {isOpen && <Modal setIsOpen={setIsOpen} modalData={selectedTodo} />}
       </>
     </div>
   );

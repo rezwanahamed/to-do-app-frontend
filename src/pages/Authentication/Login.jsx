@@ -44,7 +44,7 @@ function Login() {
         toast.success("Otp verification successful");
 
         const encryptedToken = encryptData(response.accessToken);
-        localStorage.setItem("token", encryptedToken); 
+        localStorage.setItem("token", encryptedToken);
         window.location.href = "/dashboard";
       }
     } catch (error) {
@@ -199,6 +199,13 @@ function Login() {
             </a>
             .
           </p>
+
+          <Link
+            to={appRoutes.home}
+            className="mt-4 text-xs text-gray-500 underline underline-offset-4"
+          >
+            Back to Home-page
+          </Link>
         </div>
       )}
     </div>

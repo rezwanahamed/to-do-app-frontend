@@ -239,6 +239,12 @@ function Register() {
           </a>
           .
         </p>
+        <Link
+          to={appRoutes.home}
+          className="mt-4 text-xs text-gray-500 underline underline-offset-4"
+        >
+          Back to Home-page
+        </Link>
       </div>
     </div>
   );

@@ -12,8 +12,6 @@ export default function CompletedTasks() {
   const { data: todo_data } = useCrud(
     `${apiEndpoints.getTodos}?status=Completed`,
   );
-  console.log(todo_data);
-
   useEffect(() => {
     setTodos(todo_data?.data);
   }, [todo_data]);

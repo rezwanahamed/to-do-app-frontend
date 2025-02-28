@@ -167,7 +167,7 @@ function LandingPage() {
           <div className="h-[15rem] w-full rounded-lg bg-[url('https://cdn.dribbble.com/userupload/14281057/file/original-29e907f29da71d419a3e6b05fc7b7f79.jpg?resize=1504x881&vertical=center')] bg-cover bg-center bg-no-repeat md:h-[30.5rem] md:w-full"></div>
         </section>
 
-        <div className="bottom-title w-full space-y-6 pb-10 text-center md:w-[50rem]">
+        <div className="bottom-title w-full space-y-6 pb-10 text-center md:w-[50rem] px-4">
           <p className="font-europa-italic text-3xl tracking-[2px]">
             Get Things Done, Stress Free.
           </p>

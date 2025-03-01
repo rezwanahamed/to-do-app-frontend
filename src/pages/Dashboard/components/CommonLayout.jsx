@@ -30,7 +30,7 @@ export default function CommonLayout({ title, query, queryTag }) {
 
   const handleUpdateTodo = async (id) => {
     try {
-      await axiosInstance.patch(`${apiEndpoints.updateTodo}/${id}`, {
+      await axiosInstance.patch(`${apiEndpoints.updateTodo}${id}`, {
         status: "Completed",
       });
 

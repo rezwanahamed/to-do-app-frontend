@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   const handleUpdateTodo = async (id) => {
     try {
-      await axiosInstance.patch(`${apiEndpoints.updateTodo}/${id}`, {
+      await axiosInstance.patch(`${apiEndpoints.updateTodo}${id}`, {
         status: "Completed",
       });
 

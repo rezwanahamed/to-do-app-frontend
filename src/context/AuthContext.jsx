@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import appRoutes from "../../lib/config/route";
 import { decryptData } from "../../utils/functions";
+import apiEndpoints from "../../lib/config/api";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true); // Start loading
         try {
           const response = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/user/profile/`,
+            `${import.meta.env.VITE_API_URL}${apiEndpoints.user_data}`,
             {
               headers: {
                 Authorization: `Bearer ${decryptToken}`,

@@ -42,7 +42,7 @@ export default function CommonLayout({ title, query, queryTag }) {
   };
   const handleDeleteTodo = async (id) => {
     try {
-      await axiosInstance.delete(`${apiEndpoints.deleteTodo}/${id}`);
+      await axiosInstance.delete(`${apiEndpoints.deleteTodo}${id}`);
 
       toast.success("Todo deleted successfully!");
     } catch (error) {

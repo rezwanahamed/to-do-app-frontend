@@ -14,7 +14,7 @@ export default function Modal({ setIsOpen, modalData }) {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get(
-          `${apiEndpoints.updateTodo}/${modalData}`,
+          `${apiEndpoints.updateTodo}${modalData}`,
         );
         setTodos(response.data);
       } catch (error) {
@@ -37,7 +37,7 @@ export default function Modal({ setIsOpen, modalData }) {
 
     try {
       await axiosInstance.patch(
-        `${apiEndpoints.updateTodo}/${modalData}`,
+        `${apiEndpoints.updateTodo}${modalData}`,
         payload,
       );
       toast.success("Todo updated successfully!");

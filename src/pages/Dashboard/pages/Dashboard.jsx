@@ -50,7 +50,7 @@ export default function Dashboard() {
   };
   const handleDeleteTodo = async (id) => {
     try {
-      await axiosInstance.delete(`${apiEndpoints.deleteTodo}/${id}`);
+      await axiosInstance.delete(`${apiEndpoints.deleteTodo}${id}`);
 
       toast.success("Todo deleted successfully!");
     } catch (error) {
